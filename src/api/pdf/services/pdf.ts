@@ -1,0 +1,5 @@
+/**
+ * pdf service
+ */
+
+export default () => ({});
