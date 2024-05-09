@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_statements",
+  "info": {
+    "singularName": "user-statement",
+    "pluralName": "user-statements",
+    "displayName": "User Statement"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "isCompetentSelfEvaluation": {
+      "type": "boolean",
+      "required": true
+    },
+    "isCompetentCapaBoostEvaluation": {
+      "type": "boolean",
+      "required": true
+    },
+    "isCompetentCapaBoostCertification": {
+      "type": "boolean",
+      "required": true
+    }
+  }
+}

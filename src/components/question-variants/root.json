@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_question_variants_roots",
+  "info": {
+    "name": "root",
+    "icon": "help_outline",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "generation": {
+      "type": "enumeration",
+      "enum": ["GEN_W", "GEN_X", "GEN_Y", "GEN_Z", "GEN_ALPHA", "GEN_BETA"]
+    },
+    "data": {
+      "type": "component",
+      "repeatable": true,
+      "component": "question-variants.group"
+    }
+  }
+}

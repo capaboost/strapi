@@ -65,8 +65,26 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "dateOfBirth": {
+    "birthDate": {
       "type": "date"
+    },
+    "birthYear": {
+      "type": "integer",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "NOT_DEFINED",
+        "ALPHA",
+        "DELTA",
+        "KAPPA",
+        "PI",
+        "TAU",
+        "OMEGA"
+      ],
+      "default": "NOT_DEFINED",
+      "required": true
     }
   }
 }

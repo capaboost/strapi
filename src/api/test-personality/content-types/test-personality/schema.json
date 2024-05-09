@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "professions",
+  "collectionName": "test_personalities",
   "info": {
-    "singularName": "profession",
-    "pluralName": "professions",
-    "displayName": "Profession"
+    "singularName": "test-personality",
+    "pluralName": "test-personalities",
+    "displayName": "Test Personality"
   },
   "options": {
     "draftAndPublish": false

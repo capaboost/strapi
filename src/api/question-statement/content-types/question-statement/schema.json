@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "question_statements",
+  "info": {
+    "singularName": "question-statement",
+    "pluralName": "question-statements",
+    "displayName": "Question Statement",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "quote": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "required": true,
+      "max": 100,
+      "min": 0
+    },
+    "answerScale": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "required": true,
+      "min": 2
+    },
+    "variants": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "question-variants.root"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_question_variants_groups",
+  "info": {
+    "name": "group",
+    "icon": "layers",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "group": {
+      "type": "enumeration",
+      "enum": ["YOUNG", "MIDDLE", "OLD"]
+    },
+    "data": {
+      "type": "component",
+      "repeatable": true,
+      "component": "question-variants.data"
+    }
+  }
+}

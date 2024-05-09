@@ -765,7 +765,13 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    dateOfBirth: Attribute.Date;
+    birthDate: Attribute.Date;
+    birthYear: Attribute.Integer & Attribute.Required;
+    type: Attribute.Enumeration<
+      ['NOT_DEFINED', 'ALPHA', 'DELTA', 'KAPPA', 'PI', 'TAU', 'OMEGA']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'NOT_DEFINED'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -783,12 +789,66 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiProductProduct extends Schema.CollectionType {
-  collectionName: 'products';
+export interface ApiEmotionEmotion extends Schema.CollectionType {
+  collectionName: 'emotions';
   info: {
-    singularName: 'product';
-    pluralName: 'products';
-    displayName: 'Product';
+    singularName: 'emotion';
+    pluralName: 'emotions';
+    displayName: 'Emotion';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    charge: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<0>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::emotion.emotion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::emotion.emotion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::emotion.emotion',
+      'oneToMany',
+      'api::emotion.emotion'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiEventEvent extends Schema.CollectionType {
+  collectionName: 'events';
+  info: {
+    singularName: 'event';
+    pluralName: 'events';
+    displayName: 'Event';
   };
   options: {
     draftAndPublish: true;
@@ -799,36 +859,254 @@ export interface ApiProductProduct extends Schema.CollectionType {
     };
   };
   attributes: {
-    name: Attribute.String &
+    dateFrom: Attribute.DateTime &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    dateTo: Attribute.DateTime &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    capacity: Attribute.Integer &
       Attribute.Required &
-      Attribute.Unique &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    address: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    city: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
-      }> &
-      Attribute.SetMinMaxLength<{
-        minLength: 4;
+      }>;
+    stateProvinceRegion: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    country: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    demand: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::product.product',
+      'api::event.event',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::product.product',
+      'api::event.event',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      'api::product.product',
+      'api::event.event',
       'oneToMany',
-      'api::product.product'
+      'api::event.event'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiEventTemplateEventTemplate extends Schema.CollectionType {
+  collectionName: 'event_templates';
+  info: {
+    singularName: 'event-template';
+    pluralName: 'event-templates';
+    displayName: 'Event Template';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    price: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    type: Attribute.Enumeration<
+      ['SKILLS_TRAINING', 'CONFERENCE', 'FAIR', 'SIMULATION_GAME', 'E_LEARNING']
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    hasEvaluation: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    hasCertification: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::event-template.event-template',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::event-template.event-template',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::event-template.event-template',
+      'oneToMany',
+      'api::event-template.event-template'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiFieldField extends Schema.CollectionType {
+  collectionName: 'fields';
+  info: {
+    singularName: 'field';
+    pluralName: 'fields';
+    displayName: 'Field';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::field.field',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::field.field',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::field.field',
+      'oneToMany',
+      'api::field.field'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHardSkillHardSkill extends Schema.CollectionType {
+  collectionName: 'hard_skills';
+  info: {
+    singularName: 'hard-skill';
+    pluralName: 'hard-skills';
+    displayName: 'Hard Skill';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::hard-skill.hard-skill',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::hard-skill.hard-skill',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::hard-skill.hard-skill',
+      'oneToMany',
+      'api::hard-skill.hard-skill'
     >;
     locale: Attribute.String;
   };
@@ -852,13 +1130,6 @@ export interface ApiProfessionProfession extends Schema.CollectionType {
   attributes: {
     name: Attribute.String &
       Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -887,16 +1158,17 @@ export interface ApiProfessionProfession extends Schema.CollectionType {
   };
 }
 
-export interface ApiQuestionQuestion extends Schema.CollectionType {
-  collectionName: 'questions';
+export interface ApiQuestionStatementQuestionStatement
+  extends Schema.CollectionType {
+  collectionName: 'question_statements';
   info: {
-    singularName: 'question';
-    pluralName: 'questions';
-    displayName: 'Question';
+    singularName: 'question-statement';
+    pluralName: 'question-statements';
+    displayName: 'Question Statement';
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   pluginOptions: {
     i18n: {
@@ -904,30 +1176,20 @@ export interface ApiQuestionQuestion extends Schema.CollectionType {
     };
   };
   attributes: {
-    title: Attribute.String &
+    quote: Attribute.Integer &
       Attribute.Required &
-      Attribute.Unique &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }> &
-      Attribute.SetMinMaxLength<{
-        minLength: 4;
-      }>;
-    subtitle: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Attribute.Text &
-      Attribute.Private &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+      Attribute.SetMinMax<
+        {
+          min: 0;
+          max: 100;
+        },
+        number
+      >;
     answerScale: Attribute.Integer &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -940,100 +1202,45 @@ export interface ApiQuestionQuestion extends Schema.CollectionType {
           min: 2;
         },
         number
-      > &
-      Attribute.DefaultTo<7>;
-    mbtiPair: Attribute.Enumeration<['EI', 'SN', 'TF', 'JP']> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    labelLeft: Attribute.String &
-      Attribute.Required &
+      >;
+    variants: Attribute.Component<'question-variants.root', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
-        };
-      }>;
-    labelRight: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    structogramPair: Attribute.Enumeration<
-      ['RED-GREEN', 'RED-BLUE', 'GREEN-BLUE']
-    > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    belbinPair: Attribute.Enumeration<
-      [
-        'Specialista',
-        'Inov\u00E1tor',
-        'Monitor-Vyhodnocova\u010D',
-        'Usm\u011Br\u0148ova\u010D',
-        'Realiz\u00E1tor',
-        'Dokon\u010Dovatel',
-        'Koordin\u00E1tor',
-        'T\u00FDmov\u00FD pracovn\u00EDk',
-        'Vyhled\u00E1va\u010D zdroj\u016F'
-      ]
-    > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    gallupLeft: Attribute.Enumeration<['ANO']> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    gallupRight: Attribute.Enumeration<['NE']> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::question.question',
+      'api::question-statement.question-statement',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::question.question',
+      'api::question-statement.question-statement',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      'api::question.question',
+      'api::question-statement.question-statement',
       'oneToMany',
-      'api::question.question'
+      'api::question-statement.question-statement'
     >;
     locale: Attribute.String;
   };
 }
 
-export interface ApiTestTest extends Schema.CollectionType {
-  collectionName: 'tests';
+export interface ApiSoftSkillSoftSkill extends Schema.CollectionType {
+  collectionName: 'soft_skills';
   info: {
-    singularName: 'test';
-    pluralName: 'tests';
-    displayName: 'Test';
+    singularName: 'soft-skill';
+    pluralName: 'soft-skills';
+    displayName: 'Soft Skill';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   pluginOptions: {
     i18n: {
@@ -1043,26 +1250,417 @@ export interface ApiTestTest extends Schema.CollectionType {
   attributes: {
     name: Attribute.String &
       Attribute.Required &
-      Attribute.Unique &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
-      }> &
-      Attribute.SetMinMaxLength<{
-        minLength: 4;
+      }>;
+    category: Attribute.Enumeration<
+      [
+        'PERSONAL',
+        'COMMUNICATION',
+        'OPERATIVE',
+        'STRATEGIC',
+        'MANAGEMENT',
+        'LEADERSHIP',
+        'PERFORMANCE',
+        'MOTIVATION'
+      ]
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'api::soft-skill.soft-skill',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'api::soft-skill.soft-skill',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      'api::test.test',
+      'api::soft-skill.soft-skill',
       'oneToMany',
-      'api::test.test'
+      'api::soft-skill.soft-skill'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiSpecializationSpecialization extends Schema.CollectionType {
+  collectionName: 'specializations';
+  info: {
+    singularName: 'specialization';
+    pluralName: 'specializations';
+    displayName: 'Specialization';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::specialization.specialization',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::specialization.specialization',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::specialization.specialization',
+      'oneToMany',
+      'api::specialization.specialization'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiSpecializationLevelSpecializationLevel
+  extends Schema.CollectionType {
+  collectionName: 'specialization_levels';
+  info: {
+    singularName: 'specialization-level';
+    pluralName: 'specialization-levels';
+    displayName: 'Specialization Level';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    label: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    level: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<0>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::specialization-level.specialization-level',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::specialization-level.specialization-level',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::specialization-level.specialization-level',
+      'oneToMany',
+      'api::specialization-level.specialization-level'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiStatementStatement extends Schema.CollectionType {
+  collectionName: 'statements';
+  info: {
+    singularName: 'statement';
+    pluralName: 'statements';
+    displayName: 'Statement';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    softSkill: Attribute.Relation<
+      'api::statement.statement',
+      'oneToOne',
+      'api::soft-skill.soft-skill'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::statement.statement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::statement.statement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::statement.statement',
+      'oneToMany',
+      'api::statement.statement'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiTestPersonalityTestPersonality
+  extends Schema.CollectionType {
+  collectionName: 'test_personalities';
+  info: {
+    singularName: 'test-personality';
+    pluralName: 'test-personalities';
+    displayName: 'Test Personality';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::test-personality.test-personality',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::test-personality.test-personality',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::test-personality.test-personality',
+      'oneToMany',
+      'api::test-personality.test-personality'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiTestStatementTestStatement extends Schema.CollectionType {
+  collectionName: 'test_statements';
+  info: {
+    singularName: 'test-statement';
+    pluralName: 'test-statements';
+    displayName: 'Test Statement';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    price: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::test-statement.test-statement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::test-statement.test-statement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::test-statement.test-statement',
+      'oneToMany',
+      'api::test-statement.test-statement'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiUserAddressUserAddress extends Schema.CollectionType {
+  collectionName: 'user_addresses';
+  info: {
+    singularName: 'user-address';
+    pluralName: 'user-addresses';
+    displayName: 'User Address';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    address: Attribute.String & Attribute.Required;
+    city: Attribute.String & Attribute.Required;
+    stateProvinceRegion: Attribute.String & Attribute.Required;
+    postalCode: Attribute.String & Attribute.Required;
+    country: Attribute.String & Attribute.Required;
+    phone: Attribute.String;
+    isBillingAddress: Attribute.Boolean & Attribute.Required;
+    isShippingAddress: Attribute.Boolean & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-address.user-address',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-address.user-address',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserStatementUserStatement extends Schema.CollectionType {
+  collectionName: 'user_statements';
+  info: {
+    singularName: 'user-statement';
+    pluralName: 'user-statements';
+    displayName: 'User Statement';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    isCompetentSelfEvaluation: Attribute.Boolean & Attribute.Required;
+    isCompetentCapaBoostEvaluation: Attribute.Boolean & Attribute.Required;
+    isCompetentCapaBoostCertification: Attribute.Boolean & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-statement.user-statement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-statement.user-statement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiValueValue extends Schema.CollectionType {
+  collectionName: 'values';
+  info: {
+    singularName: 'value';
+    pluralName: 'values';
+    displayName: 'Value';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::value.value',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::value.value',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::value.value',
+      'oneToMany',
+      'api::value.value'
     >;
     locale: Attribute.String;
   };
@@ -1086,10 +1684,22 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::product.product': ApiProductProduct;
+      'api::emotion.emotion': ApiEmotionEmotion;
+      'api::event.event': ApiEventEvent;
+      'api::event-template.event-template': ApiEventTemplateEventTemplate;
+      'api::field.field': ApiFieldField;
+      'api::hard-skill.hard-skill': ApiHardSkillHardSkill;
       'api::profession.profession': ApiProfessionProfession;
-      'api::question.question': ApiQuestionQuestion;
-      'api::test.test': ApiTestTest;
+      'api::question-statement.question-statement': ApiQuestionStatementQuestionStatement;
+      'api::soft-skill.soft-skill': ApiSoftSkillSoftSkill;
+      'api::specialization.specialization': ApiSpecializationSpecialization;
+      'api::specialization-level.specialization-level': ApiSpecializationLevelSpecializationLevel;
+      'api::statement.statement': ApiStatementStatement;
+      'api::test-personality.test-personality': ApiTestPersonalityTestPersonality;
+      'api::test-statement.test-statement': ApiTestStatementTestStatement;
+      'api::user-address.user-address': ApiUserAddressUserAddress;
+      'api::user-statement.user-statement': ApiUserStatementUserStatement;
+      'api::value.value': ApiValueValue;
     }
   }
 }

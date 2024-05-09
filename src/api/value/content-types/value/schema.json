@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "professions",
+  "collectionName": "values",
   "info": {
-    "singularName": "profession",
-    "pluralName": "professions",
-    "displayName": "Profession"
+    "singularName": "value",
+    "pluralName": "values",
+    "displayName": "Value"
   },
   "options": {
     "draftAndPublish": false

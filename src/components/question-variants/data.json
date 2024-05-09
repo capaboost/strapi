@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_question_variants_datas",
+  "info": {
+    "name": "data",
+    "icon": "poll",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subTitle": {
+      "type": "string"
+    },
+    "labelLeft": {
+      "type": "string"
+    },
+    "labelRight": {
+      "type": "string"
+    }
+  }
+}

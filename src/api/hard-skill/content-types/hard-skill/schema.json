@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "professions",
+  "collectionName": "hard_skills",
   "info": {
-    "singularName": "profession",
-    "pluralName": "professions",
-    "displayName": "Profession"
+    "singularName": "hard-skill",
+    "pluralName": "hard-skills",
+    "displayName": "Hard Skill"
   },
   "options": {
     "draftAndPublish": false
