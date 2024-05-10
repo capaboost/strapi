@@ -4,7 +4,8 @@
   "info": {
     "singularName": "test-statement",
     "pluralName": "test-statements",
-    "displayName": "Test Statement"
+    "displayName": "Test Statement",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -32,6 +33,22 @@
       },
       "type": "integer",
       "required": true
+    },
+    "validityInMonths": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "default": 12,
+      "required": true
+    },
+    "questions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::question-statement.question-statement",
+      "mappedBy": "testStatements"
     }
   }
 }

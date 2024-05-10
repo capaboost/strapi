@@ -18,6 +18,14 @@
     },
     "labelRight": {
       "type": "string"
+    },
+    "valueLeft": {
+      "type": "enumeration",
+      "enum": ["E", "I", "S", "N", "T", "J", "F", "P", "RESOURCE_INVESTIGATOR", "IMPLEMENTER", "SHAPER", "MONITOR_EVALUATOR", "SPECIALIST", "TEAM_WORKER", "COORDINATOR", "PLANT", "COMPLETER_FINISHER"]
+    },
+    "valueRight": {
+      "type": "enumeration",
+      "enum": ["E", "I", "S", "N", "T", "J", "F", "P", "RESOURCE_INVESTIGATOR", "IMPLEMENTER", "SHAPER", "MONITOR_EVALUATOR", "SPECIALIST", "TEAM_WORKER", "COORDINATOR", "PLANT", "COMPLETER_FINISHER"]
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "soft-skill",
     "pluralName": "soft-skills",
-    "displayName": "Soft Skill"
+    "displayName": "Soft Skill",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -41,6 +42,12 @@
         "PERFORMANCE",
         "MOTIVATION"
       ]
+    },
+    "statements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::statement.statement",
+      "mappedBy": "softSkill"
     }
   }
 }

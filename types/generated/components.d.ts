@@ -12,6 +12,48 @@ export interface QuestionVariantsData extends Schema.Component {
     subTitle: Attribute.String;
     labelLeft: Attribute.String;
     labelRight: Attribute.String;
+    valueLeft: Attribute.Enumeration<
+      [
+        'E',
+        'I',
+        'S',
+        'N',
+        'T',
+        'J',
+        'F',
+        'P',
+        'RESOURCE_INVESTIGATOR',
+        'IMPLEMENTER',
+        'SHAPER',
+        'MONITOR_EVALUATOR',
+        'SPECIALIST',
+        'TEAM_WORKER',
+        'COORDINATOR',
+        'PLANT',
+        'COMPLETER_FINISHER'
+      ]
+    >;
+    valueRight: Attribute.Enumeration<
+      [
+        'E',
+        'I',
+        'S',
+        'N',
+        'T',
+        'J',
+        'F',
+        'P',
+        'RESOURCE_INVESTIGATOR',
+        'IMPLEMENTER',
+        'SHAPER',
+        'MONITOR_EVALUATOR',
+        'SPECIALIST',
+        'TEAM_WORKER',
+        'COORDINATOR',
+        'PLANT',
+        'COMPLETER_FINISHER'
+      ]
+    >;
   };
 }
 

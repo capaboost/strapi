@@ -4,7 +4,8 @@
   "info": {
     "singularName": "test-personality",
     "pluralName": "test-personalities",
-    "displayName": "Test Personality"
+    "displayName": "Test Personality",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -23,6 +24,31 @@
       },
       "type": "string",
       "required": true
+    },
+    "price": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "required": true
+    },
+    "validityInMonths": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "required": true,
+      "default": 12
+    },
+    "questions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::question-personality.question-personality",
+      "mappedBy": "testPersonalities"
     }
   }
 }

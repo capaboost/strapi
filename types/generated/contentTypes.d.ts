@@ -772,6 +772,13 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     > &
       Attribute.Required &
       Attribute.DefaultTo<'NOT_DEFINED'>;
+    userStatements: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::user-statement.user-statement'
+    >;
+    name: Attribute.String;
+    surname: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1158,6 +1165,85 @@ export interface ApiProfessionProfession extends Schema.CollectionType {
   };
 }
 
+export interface ApiQuestionPersonalityQuestionPersonality
+  extends Schema.CollectionType {
+  collectionName: 'question_personalities';
+  info: {
+    singularName: 'question-personality';
+    pluralName: 'question-personalities';
+    displayName: 'Question Personality';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    type: Attribute.Enumeration<['MBTI', 'BELBIN', 'STRUCTOGRAM', 'GALLUP']> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.Private &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answerScale: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.SetMinMax<
+        {
+          min: 2;
+        },
+        number
+      >;
+    variants: Attribute.Component<'question-variants.root', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    testPersonalities: Attribute.Relation<
+      'api::question-personality.question-personality',
+      'manyToMany',
+      'api::test-personality.test-personality'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::question-personality.question-personality',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::question-personality.question-personality',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::question-personality.question-personality',
+      'oneToMany',
+      'api::question-personality.question-personality'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiQuestionStatementQuestionStatement
   extends Schema.CollectionType {
   collectionName: 'question_statements';
@@ -1209,6 +1295,16 @@ export interface ApiQuestionStatementQuestionStatement
           localized: true;
         };
       }>;
+    testStatements: Attribute.Relation<
+      'api::question-statement.question-statement',
+      'manyToMany',
+      'api::test-statement.test-statement'
+    >;
+    statement: Attribute.Relation<
+      'api::question-statement.question-statement',
+      'oneToOne',
+      'api::statement.statement'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1238,6 +1334,7 @@ export interface ApiSoftSkillSoftSkill extends Schema.CollectionType {
     singularName: 'soft-skill';
     pluralName: 'soft-skills';
     displayName: 'Soft Skill';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1272,6 +1369,11 @@ export interface ApiSoftSkillSoftSkill extends Schema.CollectionType {
           localized: false;
         };
       }>;
+    statements: Attribute.Relation<
+      'api::soft-skill.soft-skill',
+      'oneToMany',
+      'api::statement.statement'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1427,7 +1529,7 @@ export interface ApiStatementStatement extends Schema.CollectionType {
       }>;
     softSkill: Attribute.Relation<
       'api::statement.statement',
-      'oneToOne',
+      'manyToOne',
       'api::soft-skill.soft-skill'
     >;
     createdAt: Attribute.DateTime;
@@ -1460,6 +1562,7 @@ export interface ApiTestPersonalityTestPersonality
     singularName: 'test-personality';
     pluralName: 'test-personalities';
     displayName: 'Test Personality';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1477,6 +1580,26 @@ export interface ApiTestPersonalityTestPersonality
           localized: true;
         };
       }>;
+    price: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    validityInMonths: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<12>;
+    questions: Attribute.Relation<
+      'api::test-personality.test-personality',
+      'manyToMany',
+      'api::question-personality.question-personality'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1506,6 +1629,7 @@ export interface ApiTestStatementTestStatement extends Schema.CollectionType {
     singularName: 'test-statement';
     pluralName: 'test-statements';
     displayName: 'Test Statement';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1530,6 +1654,19 @@ export interface ApiTestStatementTestStatement extends Schema.CollectionType {
           localized: false;
         };
       }>;
+    validityInMonths: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<12>;
+    questions: Attribute.Relation<
+      'api::test-statement.test-statement',
+      'manyToMany',
+      'api::question-statement.question-statement'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1595,6 +1732,7 @@ export interface ApiUserStatementUserStatement extends Schema.CollectionType {
     singularName: 'user-statement';
     pluralName: 'user-statements';
     displayName: 'User Statement';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1603,6 +1741,16 @@ export interface ApiUserStatementUserStatement extends Schema.CollectionType {
     isCompetentSelfEvaluation: Attribute.Boolean & Attribute.Required;
     isCompetentCapaBoostEvaluation: Attribute.Boolean & Attribute.Required;
     isCompetentCapaBoostCertification: Attribute.Boolean & Attribute.Required;
+    user: Attribute.Relation<
+      'api::user-statement.user-statement',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    statement: Attribute.Relation<
+      'api::user-statement.user-statement',
+      'oneToOne',
+      'api::statement.statement'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1690,6 +1838,7 @@ declare module '@strapi/types' {
       'api::field.field': ApiFieldField;
       'api::hard-skill.hard-skill': ApiHardSkillHardSkill;
       'api::profession.profession': ApiProfessionProfession;
+      'api::question-personality.question-personality': ApiQuestionPersonalityQuestionPersonality;
       'api::question-statement.question-statement': ApiQuestionStatementQuestionStatement;
       'api::soft-skill.soft-skill': ApiSoftSkillSoftSkill;
       'api::specialization.specialization': ApiSpecializationSpecialization;

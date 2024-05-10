@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "question_statements",
+  "collectionName": "question_personalities",
   "info": {
-    "singularName": "question-statement",
-    "pluralName": "question-statements",
-    "displayName": "Question Statement",
+    "singularName": "question-personality",
+    "pluralName": "question-personalities",
+    "displayName": "Question Personality",
     "description": ""
   },
   "options": {
@@ -16,16 +16,29 @@
     }
   },
   "attributes": {
-    "quote": {
+    "type": {
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
       },
-      "type": "integer",
-      "required": true,
-      "max": 100,
-      "min": 0
+      "type": "enumeration",
+      "enum": [
+        "MBTI",
+        "BELBIN",
+        "STRUCTOGRAM",
+        "GALLUP"
+      ],
+      "required": true
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext",
+      "private": true
     },
     "answerScale": {
       "pluginOptions": {
@@ -47,16 +60,11 @@
       },
       "component": "question-variants.root"
     },
-    "testStatements": {
+    "testPersonalities": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::test-statement.test-statement",
+      "target": "api::test-personality.test-personality",
       "inversedBy": "questions"
-    },
-    "statement": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::statement.statement"
     }
   }
 }

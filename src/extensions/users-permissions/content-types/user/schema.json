@@ -85,6 +85,18 @@
       ],
       "default": "NOT_DEFINED",
       "required": true
+    },
+    "userStatements": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-statement.user-statement",
+      "mappedBy": "user"
+    },
+    "name": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string"
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "user-statement",
     "pluralName": "user-statements",
-    "displayName": "User Statement"
+    "displayName": "User Statement",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -22,6 +23,17 @@
     "isCompetentCapaBoostCertification": {
       "type": "boolean",
       "required": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "userStatements"
+    },
+    "statement": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::statement.statement"
     }
   }
 }

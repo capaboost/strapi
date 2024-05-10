@@ -35,8 +35,9 @@
     },
     "softSkill": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::soft-skill.soft-skill"
+      "relation": "manyToOne",
+      "target": "api::soft-skill.soft-skill",
+      "inversedBy": "statements"
     }
   }
 }
