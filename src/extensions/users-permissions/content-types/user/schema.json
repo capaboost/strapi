@@ -97,6 +97,15 @@
     },
     "surname": {
       "type": "string"
+    },
+    "locale": {
+      "type": "enumeration",
+      "enum": [
+        "cs",
+        "en"
+      ],
+      "default": "cs",
+      "required": true
     }
   }
 }

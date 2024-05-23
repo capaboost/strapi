@@ -779,6 +779,9 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     name: Attribute.String;
     surname: Attribute.String;
+    locale: Attribute.Enumeration<['cs', 'en']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'cs'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
