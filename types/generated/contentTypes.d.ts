@@ -782,6 +782,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     locale: Attribute.Enumeration<['cs', 'en']> &
       Attribute.Required &
       Attribute.DefaultTo<'cs'>;
+    orders: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::user-order.user-order'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1603,6 +1608,13 @@ export interface ApiTestPersonalityTestPersonality
       'manyToMany',
       'api::question-personality.question-personality'
     >;
+    uid: Attribute.UID &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1722,6 +1734,104 @@ export interface ApiUserAddressUserAddress extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::user-address.user-address',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserOrderUserOrder extends Schema.CollectionType {
+  collectionName: 'user_orders';
+  info: {
+    singularName: 'user-order';
+    pluralName: 'user-orders';
+    displayName: 'User Order';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    status: Attribute.Enumeration<
+      [
+        'NEW',
+        'PENDING_PAYMENT',
+        'PROCESSING',
+        'ON_HOLD',
+        'SHIPPED',
+        'DELIVERED',
+        'COMPLETED',
+        'CANCELLED',
+        'REFUND_REQUESTED',
+        'REDUND_PROCESSING',
+        'REDUND_APPROVED',
+        'REFUND_REJECTED',
+        'REFUNDED',
+        'FAILED'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'NEW'>;
+    user: Attribute.Relation<
+      'api::user-order.user-order',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    items: Attribute.Relation<
+      'api::user-order.user-order',
+      'oneToMany',
+      'api::user-order-item.user-order-item'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-order.user-order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-order.user-order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserOrderItemUserOrderItem extends Schema.CollectionType {
+  collectionName: 'user_order_items';
+  info: {
+    singularName: 'user-order-item';
+    pluralName: 'user-order-items';
+    displayName: 'User Order Item';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    order: Attribute.Relation<
+      'api::user-order-item.user-order-item',
+      'manyToOne',
+      'api::user-order.user-order'
+    >;
+    testPersonality: Attribute.Relation<
+      'api::user-order-item.user-order-item',
+      'oneToOne',
+      'api::test-personality.test-personality'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-order-item.user-order-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-order-item.user-order-item',
       'oneToOne',
       'admin::user'
     > &
@@ -1850,6 +1960,8 @@ declare module '@strapi/types' {
       'api::test-personality.test-personality': ApiTestPersonalityTestPersonality;
       'api::test-statement.test-statement': ApiTestStatementTestStatement;
       'api::user-address.user-address': ApiUserAddressUserAddress;
+      'api::user-order.user-order': ApiUserOrderUserOrder;
+      'api::user-order-item.user-order-item': ApiUserOrderItemUserOrderItem;
       'api::user-statement.user-statement': ApiUserStatementUserStatement;
       'api::value.value': ApiValueValue;
     }

@@ -106,6 +106,12 @@
       ],
       "default": "cs",
       "required": true
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-order.user-order",
+      "mappedBy": "user"
     }
   }
 }

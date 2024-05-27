@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_order_items",
+  "info": {
+    "singularName": "user-order-item",
+    "pluralName": "user-order-items",
+    "displayName": "User Order Item",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::user-order.user-order",
+      "inversedBy": "items"
+    },
+    "testPersonality": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::test-personality.test-personality"
+    }
+  }
+}
