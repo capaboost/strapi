@@ -9,5 +9,14 @@ export default {
         middlewares: [],
       },
     },
+    {
+      method: 'POST',
+      path: '/capa-boost/orders',
+      handler: 'capa-boost.orders',
+      config: {
+        policies: [],
+        middlewares: [],
+      },
+    },
   ],
 };
