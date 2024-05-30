@@ -14,6 +14,7 @@ export default {
       path: '/stripe/webhook',
       handler: 'stripe.webhook',
       config: {
+        auth: false,
         policies: [],
         middlewares: [],
       },
