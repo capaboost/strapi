@@ -12,6 +12,8 @@ export default ({ env }) => {
 
   console.log('DATABASE_CLIENT:railway:', process.env.DATABASE_CLIENT);
 
+  console.log('All Environment Variables:', process.env);
+
   const connections = {
     mysql: {
       connection: {
