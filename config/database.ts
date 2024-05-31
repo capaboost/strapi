@@ -10,6 +10,8 @@ export default ({ env }) => {
   console.log('DATABASE_USERNAME:', env('DATABASE_USERNAME'));
   console.log('DATABASE_PASSWORD:', env('DATABASE_PASSWORD'));
 
+  console.log('DATABASE_CLIENT:railway:', process.env.DATABASE_CLIENT);
+
   const connections = {
     mysql: {
       connection: {
