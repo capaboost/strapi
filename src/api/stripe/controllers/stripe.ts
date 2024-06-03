@@ -39,12 +39,6 @@ export default {
     // Signing secret in stripe admin, todo: make it .env variable
     const webhookSecret = 'whsec_RS43PqSLkI0lxAFNW4PlkK8LhxpjjjwL';
 
-    // test log
-    console.log('RAW BODY: ', ctx.req.rawBody);
-
-    // test log 2
-    console.log('WHOLE CTX', ctx.req);
-
     let event: any;
 
     try {
@@ -72,6 +66,7 @@ export default {
     }
 
     // Zpracování různých typů událostí
+    console.log('FINAL STRIPE EVENT: ', event);
     if (event.type === 'checkout.session.completed') {
       console.log('BORAT GREAT SUCCESS');
       const session = event.data.object;
