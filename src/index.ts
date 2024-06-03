@@ -1,3 +1,5 @@
+import rawBodyMiddleware from "./middlewares/rawBody";
+
 export default {
   /**
    * An asynchronous register function that runs before
@@ -5,7 +7,10 @@ export default {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/*{ strapi }*/) {},
+  // register({ strapi }) {},
+  register({ strapi }) {
+    strapi.server.use(rawBodyMiddleware);
+  },
 
   /**
    * An asynchronous bootstrap function that runs before

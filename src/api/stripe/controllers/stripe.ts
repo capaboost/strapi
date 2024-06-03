@@ -39,12 +39,16 @@ export default {
     // Signing secret in stripe admin, todo: make it .env variable
     const webhookSecret = 'whsec_RS43PqSLkI0lxAFNW4PlkK8LhxpjjjwL';
 
+    // test log
+    console.log('RAW BODY: ', ctx.req.rawBody);
+
     let event: any;
 
     try {
-      event = stripe.webhooks.constructEvent(JSON.parse(ctx.request.body), sig, webhookSecret);
+      // event = stripe.webhooks.constructEvent(JSON.parse(ctx.request.body), sig, webhookSecret);
       // event = stripe.webhooks.constructEvent(ctx.request.body, sig, webhookSecret);
-      // event = stripe.webhooks.constructEvent(ctx.req.rawBody, sig, webhookSecret);
+      event = stripe.webhooks.constructEvent(ctx.req.rawBody, sig, webhookSecret);
+
     } catch (err) {
       console.error('⚠️  Webhook signature verification failed.', err.message);
       ctx.status = 400;
