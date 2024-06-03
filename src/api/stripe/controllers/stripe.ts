@@ -42,12 +42,27 @@ export default {
     // test log
     console.log('RAW BODY: ', ctx.req.rawBody);
 
+    // test log 2
+    console.log('WHOLE CTX', ctx.req);
+
     let event: any;
 
     try {
       // event = stripe.webhooks.constructEvent(JSON.parse(ctx.request.body), sig, webhookSecret);
       // event = stripe.webhooks.constructEvent(ctx.request.body, sig, webhookSecret);
-      event = stripe.webhooks.constructEvent(ctx.req.rawBody, sig, webhookSecret);
+      // event = stripe.webhooks.constructEvent(ctx.req.rawBody, sig, webhookSecret);
+
+         // Získání raw body
+         const chunks: Uint8Array[] = [];
+         ctx.req.on('data', (chunk) => {
+           chunks.push(chunk);
+         });
+   
+         await new Promise((resolve) => ctx.req.on('end', resolve));
+   
+         const rawBody = Buffer.concat(chunks).toString();
+   
+         event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret);
 
     } catch (err) {
       console.error('⚠️  Webhook signature verification failed.', err.message);
