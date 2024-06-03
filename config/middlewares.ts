@@ -1,5 +1,3 @@
-import rawBodyMiddleware from "../src/middlewares/rawBody";
-
 export default [
   'strapi::logger',
   'strapi::errors',
@@ -12,8 +10,7 @@ export default [
   'strapi::favicon',
   'strapi::public',
   {
-    name: 'global::rawBody',
     resolve: './src/middlewares/rawBody',
-    config: {},
+    options: {},
   },
 ];
