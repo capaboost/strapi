@@ -1,4 +1,4 @@
-// todo: give this to env variable
+// todo: give this to env variable, important
 const stripe = require('stripe')('sk_test_51MWvwTJCZOkBLZhGvWuWQWGjoqZsXt9JWBEyw4Qs27A9CB9BRGsJwcnPpAqxyGbFEJJdNULllALM07A3UJyBmldW004wXY9pG8');
 
 export default {
