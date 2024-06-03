@@ -22,10 +22,8 @@ export default {
       ],
       mode: 'payment',
       // success_url: 'http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}',
-      // success_url: `${process.env.CAPABOOST_URL}/app/order/success`,
-      // cancel_url: `${process.env.CAPABOOST_URL}/app/order/failed`,
-      success_url: 'http://localhost:1234/app/order/success',
-      cancel_url: 'http://localhost:1234/app/order/failed',
+      success_url: `${process.env.CAPABOOST_URL}/app/order/success`,
+      cancel_url: `${process.env.CAPABOOST_URL}/app/order/failed`,
       metadata: {
         orderId: 'todo: orderId',
       }
