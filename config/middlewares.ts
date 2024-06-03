@@ -13,6 +13,7 @@ export default [
   'strapi::public',
   {
     name: 'global::rawBody',
-    handler: rawBodyMiddleware,
+    resolve: './src/middlewares/rawBody',
+    config: {},
   },
 ];
