@@ -36,7 +36,8 @@ export default {
   },
   webhook: async (ctx, next) => {
     const sig = ctx.request.headers['stripe-signature'];
-    const webhookSecret = 'tvůj_webhook_secret';
+    // Signing secret in stripe admin, todo: make it .env variable
+    const webhookSecret = 'whsec_RS43PqSLkI0lxAFNW4PlkK8LhxpjjjwL';
 
     let event: any;
 
