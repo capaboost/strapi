@@ -42,7 +42,7 @@ export default {
     let event: any;
 
     try {
-      event = stripe.webhooks.constructEvent(ctx.request.body, sig, webhookSecret);
+      event = stripe.webhooks.constructEvent(JSON.stringify(ctx.request.body), sig, webhookSecret);
     } catch (err) {
       console.error('⚠️  Webhook signature verification failed.', err.message);
       ctx.status = 400;
