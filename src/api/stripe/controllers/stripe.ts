@@ -41,6 +41,7 @@ export default {
 
     let event: any;
 
+    console.log('TRYING TO EXECUTE WEBHOOK');
     try {
       // event = stripe.webhooks.constructEvent(JSON.parse(ctx.request.body), sig, webhookSecret);
       // event = stripe.webhooks.constructEvent(ctx.request.body, sig, webhookSecret);
@@ -59,6 +60,10 @@ export default {
          event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret);
 
          // todo: POKUD SE UŽ DOSTANU TADY, TAK TADY BYCH MĚL VRÁTIT 200 A SUCCESS AŤ TO POCHOPÍ I STRIPE
+         ctx.status = 200;
+         ctx.body = {
+           message: 'Order has been changed - webook is working tacabro!',
+         };
 
     } catch (err) {
       console.error('⚠️  Webhook signature verification failed.', err.message);
@@ -67,11 +72,9 @@ export default {
       return;
     }
 
-    ctx.status = 200;
-    ctx.body = {
-      message: 'Order has been changed - webook is working tacabro!',
-    };
 
+
+    // AFTERWORK WILL BE DONE HERE
     // Zpracování různých typů událostí až když vrátím webhook že je ok
     console.log('FINAL STRIPE EVENT: ', event);
     if (event.type === 'checkout.session.completed') {
