@@ -55,16 +55,9 @@ export default {
       return;
     }
 
-    // todo: call a service afterwards so we can try catch and get api response properly
     if (event.type === 'checkout.session.completed') {
       const session = event.data.object;
-      console.log('WEBHOOK stripe session: ', session);
-
-      // get orderId (todo: stačí jenom orderId, nebo i nějaký API key)
       const orderId = session.metadata.orderId;
-      console.log('what is my orderId:, ', orderId);
-
-      // Update the user-order entity
       try {
         await strapi.entityService.update('api::user-order.user-order', orderId, {
           data: {
@@ -75,7 +68,6 @@ export default {
       } catch (error) {
         console.error('Error updating order:', error);
       }
-      
     }
   }
 };
