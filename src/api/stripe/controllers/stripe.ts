@@ -1,5 +1,6 @@
 // todo: give this to env variable, important
 const stripe = require('stripe')('sk_test_51MWvwTJCZOkBLZhGvWuWQWGjoqZsXt9JWBEyw4Qs27A9CB9BRGsJwcnPpAqxyGbFEJJdNULllALM07A3UJyBmldW004wXY9pG8');
+const unparsed = require('koa-body/unparsed.js');
 
 export default {
   createCheckoutSession: async (ctx: any, next: any) => {
@@ -43,12 +44,15 @@ export default {
 
     console.log('TRYING TO EXECUTE WEBHOOK');
     try {
+      const rawBody = ctx.request.body[unparsed];
+      event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret);
+
       // event = stripe.webhooks.constructEvent(JSON.parse(ctx.request.body), sig, webhookSecret);
       // event = stripe.webhooks.constructEvent(ctx.request.body, sig, webhookSecret);
       // event = stripe.webhooks.constructEvent(ctx.req.rawBody, sig, webhookSecret);
 
          // Získání raw body
-         const chunks: Uint8Array[] = [];
+         /*const chunks: Uint8Array[] = [];
          ctx.req.on('data', (chunk) => {
            chunks.push(chunk);
          });
@@ -57,7 +61,7 @@ export default {
    
          const rawBody = Buffer.concat(chunks).toString();
    
-         event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret);
+         event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret);*/
 
          // todo: POKUD SE UŽ DOSTANU TADY, TAK TADY BYCH MĚL VRÁTIT 200 A SUCCESS AŤ TO POCHOPÍ I STRIPE
          ctx.status = 200;
