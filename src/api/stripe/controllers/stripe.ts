@@ -3,6 +3,8 @@ const unparsed = require('koa-body/unparsed.js');
 
 export default {
   createCheckoutSession: async (ctx: any, next: any) => {
+    // todo:
+    // + maybe registration email to prefill the form?
     const { productName, price, orderId } = ctx.request.body;
 
     const session = await stripe.checkout.sessions.create({
