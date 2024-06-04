@@ -1,5 +1,6 @@
 // todo: give this to env variable, important
-const stripe = require('stripe')('sk_test_51MWvwTJCZOkBLZhGvWuWQWGjoqZsXt9JWBEyw4Qs27A9CB9BRGsJwcnPpAqxyGbFEJJdNULllALM07A3UJyBmldW004wXY9pG8');
+// const stripe = require('stripe')('sk_test_51MWvwTJCZOkBLZhGvWuWQWGjoqZsXt9JWBEyw4Qs27A9CB9BRGsJwcnPpAqxyGbFEJJdNULllALM07A3UJyBmldW004wXY9pG8');
+const stripe = require('stripe')(process.env.STRIPE_INSTANCE_API_KEY);
 const unparsed = require('koa-body/unparsed.js');
 
 export default {
@@ -38,37 +39,18 @@ export default {
   webhook: async (ctx, next) => {
     const sig = ctx.request.headers['stripe-signature'];
     // Signing secret in stripe admin, todo: make it .env variable
-    const webhookSecret = 'whsec_RS43PqSLkI0lxAFNW4PlkK8LhxpjjjwL';
+    // const webhookSecret = 'whsec_RS43PqSLkI0lxAFNW4PlkK8LhxpjjjwL';
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
     let event: any;
 
-    console.log('TRYING TO EXECUTE WEBHOOK');
     try {
       const rawBody = ctx.request.body[unparsed];
       event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret);
-
-      // event = stripe.webhooks.constructEvent(JSON.parse(ctx.request.body), sig, webhookSecret);
-      // event = stripe.webhooks.constructEvent(ctx.request.body, sig, webhookSecret);
-      // event = stripe.webhooks.constructEvent(ctx.req.rawBody, sig, webhookSecret);
-
-         // Získání raw body
-         /*const chunks: Uint8Array[] = [];
-         ctx.req.on('data', (chunk) => {
-           chunks.push(chunk);
-         });
-   
-         await new Promise((resolve) => ctx.req.on('end', resolve));
-   
-         const rawBody = Buffer.concat(chunks).toString();
-   
-         event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret);*/
-
-         // todo: POKUD SE UŽ DOSTANU TADY, TAK TADY BYCH MĚL VRÁTIT 200 A SUCCESS AŤ TO POCHOPÍ I STRIPE
-         ctx.status = 200;
-         ctx.body = {
-           message: 'Order has been changed - webook is working tacabro!',
-         };
-
+      ctx.status = 200;
+      ctx.body = {
+        message: 'Webhook call success!',
+      };
     } catch (err) {
       console.error('⚠️  Webhook signature verification failed.', err.message);
       ctx.status = 400;
@@ -76,17 +58,14 @@ export default {
       return;
     }
 
-
-
-    // AFTERWORK WILL BE DONE HERE
-    // Zpracování různých typů událostí až když vrátím webhook že je ok
-    console.log('FINAL STRIPE EVENT: ', event);
+    // todo: call a service afterwards so we can try catch and get api response properly
     if (event.type === 'checkout.session.completed') {
-      console.log('BORAT GREAT SUCCESS');
       const session = event.data.object;
+      console.log('WEBHOOK stripe session: ', session);
 
       // get orderId
       const orderId = session.metadata.orderId;
+      console.log('what is my orderId:, ', orderId);
       
       // Najdi a aktualizuj objednávku ve Strapi
       // todo: update user order by orderId from NEW to PAID
@@ -95,7 +74,7 @@ export default {
         data: { status: 'paid' },
       });*/
 
-      console.log(`Order ${orderId} has been updated to paid.`);
+      // console.log(`Order ${orderId} has been updated to paid.`);
     }
   }
 };
