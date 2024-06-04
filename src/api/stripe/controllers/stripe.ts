@@ -60,19 +60,22 @@ export default {
       const session = event.data.object;
       console.log('WEBHOOK stripe session: ', session);
 
-      // get orderId (todo: stačí jenom orderId)
+      // get orderId (todo: stačí jenom orderId, nebo i nějaký API key)
       const orderId = session.metadata.orderId;
       console.log('what is my orderId:, ', orderId);
-      
-      
-      // Najdi a aktualizuj objednávku ve Strapi
-      // todo: update user order by orderId from NEW to PAID
-      /*await strapi.db.query('api::order.order').update({
-        where: { id: orderId },
-        data: { status: 'paid' },
-      });*/
 
-      // console.log(`Order ${orderId} has been updated to paid.`);
+      // Update the user-order entity
+      try {
+        await strapi.entityService.update('api::user-order.user-order', orderId, {
+          data: {
+            status: 'COMPLETED',
+          },
+        });
+        console.log(`Order ${orderId} has been updated to COMPLETED.`);
+      } catch (error) {
+        console.error('Error updating order:', error);
+      }
+      
     }
   }
 };
