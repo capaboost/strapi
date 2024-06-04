@@ -1,11 +1,9 @@
-// todo: give this to env variable, important
-// const stripe = require('stripe')('sk_test_51MWvwTJCZOkBLZhGvWuWQWGjoqZsXt9JWBEyw4Qs27A9CB9BRGsJwcnPpAqxyGbFEJJdNULllALM07A3UJyBmldW004wXY9pG8');
 const stripe = require('stripe')(process.env.STRIPE_INSTANCE_API_KEY);
 const unparsed = require('koa-body/unparsed.js');
 
 export default {
   createCheckoutSession: async (ctx: any, next: any) => {
-    const { productName, price } = ctx.request.body;
+    const { productName, price, orderId } = ctx.request.body;
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -23,11 +21,10 @@ export default {
         },
       ],
       mode: 'payment',
-      // success_url: 'http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}',
       success_url: `${process.env.CAPABOOST_URL}/app/order/success`,
       cancel_url: `${process.env.CAPABOOST_URL}/app/order/failed`,
       metadata: {
-        orderId: 'todo: orderId',
+        orderId,
       }
     });
 
@@ -38,8 +35,6 @@ export default {
   },
   webhook: async (ctx, next) => {
     const sig = ctx.request.headers['stripe-signature'];
-    // Signing secret in stripe admin, todo: make it .env variable
-    // const webhookSecret = 'whsec_RS43PqSLkI0lxAFNW4PlkK8LhxpjjjwL';
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
     let event: any;
@@ -63,9 +58,10 @@ export default {
       const session = event.data.object;
       console.log('WEBHOOK stripe session: ', session);
 
-      // get orderId
+      // get orderId (todo: stačí jenom orderId)
       const orderId = session.metadata.orderId;
       console.log('what is my orderId:, ', orderId);
+      
       
       // Najdi a aktualizuj objednávku ve Strapi
       // todo: update user order by orderId from NEW to PAID
