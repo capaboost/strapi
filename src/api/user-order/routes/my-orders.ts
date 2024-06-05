@@ -7,6 +7,7 @@ export default {
       config: {
         policies: [],
         middlewares: [],
+        description: 'It should get my orders with auth mechanisms'
       },
     },
   ],
