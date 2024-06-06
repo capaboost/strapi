@@ -3,7 +3,6 @@
  */
 
 import { factories } from '@strapi/strapi';
-import {  } from '@strapi/utils';
 
 export default factories.createCoreController('api::user-order.user-order', ({ strapi }) => ({
   myOrders: async (ctx, next) => {
@@ -16,7 +15,11 @@ export default factories.createCoreController('api::user-order.user-order', ({ s
       const userOrders = await strapi.entityService.findMany('api::user-order.user-order', {
         filters: { user: user.id },
         populate: {
-          items: true,
+          items: {
+            populate: {
+              testPersonality: true, 
+            },
+          },
         },
       });
 
