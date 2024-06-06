@@ -20,10 +20,11 @@ export default factories.createCoreController('api::user-order.user-order', ({ s
         },
       });
 
-      ctx.body = {
+      /*ctx.body = {
         message: 'User orders retrieved successfully',
         data: userOrders,
-      };
+      };*/
+      ctx.body = userOrders;
     } catch (err) {
       console.error('Error retrieving user orders:', err);
       ctx.body = err;

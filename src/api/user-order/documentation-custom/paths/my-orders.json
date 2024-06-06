@@ -11,7 +11,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/UserOrderListResponse"
+								"$ref": "#/components/schemas/MyOrders"
 							}
 						}
 					}

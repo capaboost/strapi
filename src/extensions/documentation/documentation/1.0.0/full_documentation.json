@@ -18,7 +18,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-06-06T07:04:01.288Z"
+    "x-generation-date": "2024-06-06T07:28:09.558Z"
   },
   "servers": [
     {
@@ -14997,6 +14997,41 @@
             "type": "object"
           }
         }
+      },
+      "MyOrders": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserOrderListResponseDataItem"
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "pagination": {
+                "type": "object",
+                "properties": {
+                  "page": {
+                    "type": "integer"
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "minimum": 25
+                  },
+                  "pageCount": {
+                    "type": "integer",
+                    "maximum": 1
+                  },
+                  "total": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -25970,6 +26005,26 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/ValueLocalizationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/my-orders": {
+      "get": {
+        "operationId": "get/my-orders",
+        "tags": [
+          "User-order"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MyOrders"
+                }
               }
             }
           }
