@@ -1,21 +1,22 @@
 {
-  "/my-orders": {
-    "operationId": "get/my-orders",
-    "tags": [
-      "User-order"
-    ],
-    "responses": {
-      "200": {
-        "description": "OK",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/UserOrderListResponse"
-            }
-          }
-        }
-      }
-    }
-  }
+	"/my-orders": {
+		"get": {
+			"operationId": "get/my-orders",
+			"tags": [
+				"User-order"
+			],
+			"responses": {
+				"200": {
+					"description": "OK",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserOrderListResponse"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
-  
