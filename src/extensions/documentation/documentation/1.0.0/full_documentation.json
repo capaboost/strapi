@@ -18,7 +18,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-06-13T07:31:07.766Z"
+    "x-generation-date": "2024-06-13T08:04:01.297Z"
   },
   "servers": [
     {
@@ -3655,50 +3655,6 @@
                                                         },
                                                         "labelRight": {
                                                           "type": "string"
-                                                        },
-                                                        "valueLeft": {
-                                                          "type": "string",
-                                                          "enum": [
-                                                            "E",
-                                                            "I",
-                                                            "S",
-                                                            "N",
-                                                            "T",
-                                                            "J",
-                                                            "F",
-                                                            "P",
-                                                            "RESOURCE_INVESTIGATOR",
-                                                            "IMPLEMENTER",
-                                                            "SHAPER",
-                                                            "MONITOR_EVALUATOR",
-                                                            "SPECIALIST",
-                                                            "TEAM_WORKER",
-                                                            "COORDINATOR",
-                                                            "PLANT",
-                                                            "COMPLETER_FINISHER"
-                                                          ]
-                                                        },
-                                                        "valueRight": {
-                                                          "type": "string",
-                                                          "enum": [
-                                                            "E",
-                                                            "I",
-                                                            "S",
-                                                            "N",
-                                                            "T",
-                                                            "J",
-                                                            "F",
-                                                            "P",
-                                                            "RESOURCE_INVESTIGATOR",
-                                                            "IMPLEMENTER",
-                                                            "SHAPER",
-                                                            "MONITOR_EVALUATOR",
-                                                            "SPECIALIST",
-                                                            "TEAM_WORKER",
-                                                            "COORDINATOR",
-                                                            "PLANT",
-                                                            "COMPLETER_FINISHER"
-                                                          ]
                                                         }
                                                       }
                                                     }
@@ -4326,50 +4282,6 @@
                       },
                       "labelRight": {
                         "type": "string"
-                      },
-                      "valueLeft": {
-                        "type": "string",
-                        "enum": [
-                          "E",
-                          "I",
-                          "S",
-                          "N",
-                          "T",
-                          "J",
-                          "F",
-                          "P",
-                          "RESOURCE_INVESTIGATOR",
-                          "IMPLEMENTER",
-                          "SHAPER",
-                          "MONITOR_EVALUATOR",
-                          "SPECIALIST",
-                          "TEAM_WORKER",
-                          "COORDINATOR",
-                          "PLANT",
-                          "COMPLETER_FINISHER"
-                        ]
-                      },
-                      "valueRight": {
-                        "type": "string",
-                        "enum": [
-                          "E",
-                          "I",
-                          "S",
-                          "N",
-                          "T",
-                          "J",
-                          "F",
-                          "P",
-                          "RESOURCE_INVESTIGATOR",
-                          "IMPLEMENTER",
-                          "SHAPER",
-                          "MONITOR_EVALUATOR",
-                          "SPECIALIST",
-                          "TEAM_WORKER",
-                          "COORDINATOR",
-                          "PLANT",
-                          "COMPLETER_FINISHER"
-                        ]
                       }
                     }
                   }
@@ -4716,50 +4628,6 @@
                                                         },
                                                         "labelRight": {
                                                           "type": "string"
-                                                        },
-                                                        "valueLeft": {
-                                                          "type": "string",
-                                                          "enum": [
-                                                            "E",
-                                                            "I",
-                                                            "S",
-                                                            "N",
-                                                            "T",
-                                                            "J",
-                                                            "F",
-                                                            "P",
-                                                            "RESOURCE_INVESTIGATOR",
-                                                            "IMPLEMENTER",
-                                                            "SHAPER",
-                                                            "MONITOR_EVALUATOR",
-                                                            "SPECIALIST",
-                                                            "TEAM_WORKER",
-                                                            "COORDINATOR",
-                                                            "PLANT",
-                                                            "COMPLETER_FINISHER"
-                                                          ]
-                                                        },
-                                                        "valueRight": {
-                                                          "type": "string",
-                                                          "enum": [
-                                                            "E",
-                                                            "I",
-                                                            "S",
-                                                            "N",
-                                                            "T",
-                                                            "J",
-                                                            "F",
-                                                            "P",
-                                                            "RESOURCE_INVESTIGATOR",
-                                                            "IMPLEMENTER",
-                                                            "SHAPER",
-                                                            "MONITOR_EVALUATOR",
-                                                            "SPECIALIST",
-                                                            "TEAM_WORKER",
-                                                            "COORDINATOR",
-                                                            "PLANT",
-                                                            "COMPLETER_FINISHER"
-                                                          ]
                                                         }
                                                       }
                                                     }
@@ -8201,50 +8069,6 @@
                                           },
                                           "labelRight": {
                                             "type": "string"
-                                          },
-                                          "valueLeft": {
-                                            "type": "string",
-                                            "enum": [
-                                              "E",
-                                              "I",
-                                              "S",
-                                              "N",
-                                              "T",
-                                              "J",
-                                              "F",
-                                              "P",
-                                              "RESOURCE_INVESTIGATOR",
-                                              "IMPLEMENTER",
-                                              "SHAPER",
-                                              "MONITOR_EVALUATOR",
-                                              "SPECIALIST",
-                                              "TEAM_WORKER",
-                                              "COORDINATOR",
-                                              "PLANT",
-                                              "COMPLETER_FINISHER"
-                                            ]
-                                          },
-                                          "valueRight": {
-                                            "type": "string",
-                                            "enum": [
-                                              "E",
-                                              "I",
-                                              "S",
-                                              "N",
-                                              "T",
-                                              "J",
-                                              "F",
-                                              "P",
-                                              "RESOURCE_INVESTIGATOR",
-                                              "IMPLEMENTER",
-                                              "SHAPER",
-                                              "MONITOR_EVALUATOR",
-                                              "SPECIALIST",
-                                              "TEAM_WORKER",
-                                              "COORDINATOR",
-                                              "PLANT",
-                                              "COMPLETER_FINISHER"
-                                            ]
                                           }
                                         }
                                       }
@@ -9088,50 +8912,6 @@
                                           },
                                           "labelRight": {
                                             "type": "string"
-                                          },
-                                          "valueLeft": {
-                                            "type": "string",
-                                            "enum": [
-                                              "E",
-                                              "I",
-                                              "S",
-                                              "N",
-                                              "T",
-                                              "J",
-                                              "F",
-                                              "P",
-                                              "RESOURCE_INVESTIGATOR",
-                                              "IMPLEMENTER",
-                                              "SHAPER",
-                                              "MONITOR_EVALUATOR",
-                                              "SPECIALIST",
-                                              "TEAM_WORKER",
-                                              "COORDINATOR",
-                                              "PLANT",
-                                              "COMPLETER_FINISHER"
-                                            ]
-                                          },
-                                          "valueRight": {
-                                            "type": "string",
-                                            "enum": [
-                                              "E",
-                                              "I",
-                                              "S",
-                                              "N",
-                                              "T",
-                                              "J",
-                                              "F",
-                                              "P",
-                                              "RESOURCE_INVESTIGATOR",
-                                              "IMPLEMENTER",
-                                              "SHAPER",
-                                              "MONITOR_EVALUATOR",
-                                              "SPECIALIST",
-                                              "TEAM_WORKER",
-                                              "COORDINATOR",
-                                              "PLANT",
-                                              "COMPLETER_FINISHER"
-                                            ]
                                           }
                                         }
                                       }
@@ -11352,50 +11132,6 @@
                                                                                               },
                                                                                               "labelRight": {
                                                                                                 "type": "string"
-                                                                                              },
-                                                                                              "valueLeft": {
-                                                                                                "type": "string",
-                                                                                                "enum": [
-                                                                                                  "E",
-                                                                                                  "I",
-                                                                                                  "S",
-                                                                                                  "N",
-                                                                                                  "T",
-                                                                                                  "J",
-                                                                                                  "F",
-                                                                                                  "P",
-                                                                                                  "RESOURCE_INVESTIGATOR",
-                                                                                                  "IMPLEMENTER",
-                                                                                                  "SHAPER",
-                                                                                                  "MONITOR_EVALUATOR",
-                                                                                                  "SPECIALIST",
-                                                                                                  "TEAM_WORKER",
-                                                                                                  "COORDINATOR",
-                                                                                                  "PLANT",
-                                                                                                  "COMPLETER_FINISHER"
-                                                                                                ]
-                                                                                              },
-                                                                                              "valueRight": {
-                                                                                                "type": "string",
-                                                                                                "enum": [
-                                                                                                  "E",
-                                                                                                  "I",
-                                                                                                  "S",
-                                                                                                  "N",
-                                                                                                  "T",
-                                                                                                  "J",
-                                                                                                  "F",
-                                                                                                  "P",
-                                                                                                  "RESOURCE_INVESTIGATOR",
-                                                                                                  "IMPLEMENTER",
-                                                                                                  "SHAPER",
-                                                                                                  "MONITOR_EVALUATOR",
-                                                                                                  "SPECIALIST",
-                                                                                                  "TEAM_WORKER",
-                                                                                                  "COORDINATOR",
-                                                                                                  "PLANT",
-                                                                                                  "COMPLETER_FINISHER"
-                                                                                                ]
                                                                                               }
                                                                                             }
                                                                                           }
@@ -12909,50 +12645,6 @@
                                                                                 },
                                                                                 "labelRight": {
                                                                                   "type": "string"
-                                                                                },
-                                                                                "valueLeft": {
-                                                                                  "type": "string",
-                                                                                  "enum": [
-                                                                                    "E",
-                                                                                    "I",
-                                                                                    "S",
-                                                                                    "N",
-                                                                                    "T",
-                                                                                    "J",
-                                                                                    "F",
-                                                                                    "P",
-                                                                                    "RESOURCE_INVESTIGATOR",
-                                                                                    "IMPLEMENTER",
-                                                                                    "SHAPER",
-                                                                                    "MONITOR_EVALUATOR",
-                                                                                    "SPECIALIST",
-                                                                                    "TEAM_WORKER",
-                                                                                    "COORDINATOR",
-                                                                                    "PLANT",
-                                                                                    "COMPLETER_FINISHER"
-                                                                                  ]
-                                                                                },
-                                                                                "valueRight": {
-                                                                                  "type": "string",
-                                                                                  "enum": [
-                                                                                    "E",
-                                                                                    "I",
-                                                                                    "S",
-                                                                                    "N",
-                                                                                    "T",
-                                                                                    "J",
-                                                                                    "F",
-                                                                                    "P",
-                                                                                    "RESOURCE_INVESTIGATOR",
-                                                                                    "IMPLEMENTER",
-                                                                                    "SHAPER",
-                                                                                    "MONITOR_EVALUATOR",
-                                                                                    "SPECIALIST",
-                                                                                    "TEAM_WORKER",
-                                                                                    "COORDINATOR",
-                                                                                    "PLANT",
-                                                                                    "COMPLETER_FINISHER"
-                                                                                  ]
                                                                                 }
                                                                               }
                                                                             }
@@ -14393,50 +14085,6 @@
                                                                                               },
                                                                                               "labelRight": {
                                                                                                 "type": "string"
-                                                                                              },
-                                                                                              "valueLeft": {
-                                                                                                "type": "string",
-                                                                                                "enum": [
-                                                                                                  "E",
-                                                                                                  "I",
-                                                                                                  "S",
-                                                                                                  "N",
-                                                                                                  "T",
-                                                                                                  "J",
-                                                                                                  "F",
-                                                                                                  "P",
-                                                                                                  "RESOURCE_INVESTIGATOR",
-                                                                                                  "IMPLEMENTER",
-                                                                                                  "SHAPER",
-                                                                                                  "MONITOR_EVALUATOR",
-                                                                                                  "SPECIALIST",
-                                                                                                  "TEAM_WORKER",
-                                                                                                  "COORDINATOR",
-                                                                                                  "PLANT",
-                                                                                                  "COMPLETER_FINISHER"
-                                                                                                ]
-                                                                                              },
-                                                                                              "valueRight": {
-                                                                                                "type": "string",
-                                                                                                "enum": [
-                                                                                                  "E",
-                                                                                                  "I",
-                                                                                                  "S",
-                                                                                                  "N",
-                                                                                                  "T",
-                                                                                                  "J",
-                                                                                                  "F",
-                                                                                                  "P",
-                                                                                                  "RESOURCE_INVESTIGATOR",
-                                                                                                  "IMPLEMENTER",
-                                                                                                  "SHAPER",
-                                                                                                  "MONITOR_EVALUATOR",
-                                                                                                  "SPECIALIST",
-                                                                                                  "TEAM_WORKER",
-                                                                                                  "COORDINATOR",
-                                                                                                  "PLANT",
-                                                                                                  "COMPLETER_FINISHER"
-                                                                                                ]
                                                                                               }
                                                                                             }
                                                                                           }
