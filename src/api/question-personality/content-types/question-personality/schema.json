@@ -65,6 +65,62 @@
       "relation": "manyToMany",
       "target": "api::test-personality.test-personality",
       "inversedBy": "questions"
+    },
+    "valueLeft": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "E",
+        "I",
+        "S",
+        "N",
+        "T",
+        "J",
+        "F",
+        "P",
+        "RESOURCE_INVESTIGATOR",
+        "IMPLEMENTER",
+        "SHAPER",
+        "MONITOR_EVALUATOR",
+        "SPECIALIST",
+        "TEAM_WORKER",
+        "COORDINATOR",
+        "PLANT",
+        "COMPLETER_FINISHER"
+      ],
+      "required": true
+    },
+    "valueRight": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "E",
+        "I",
+        "S",
+        "N",
+        "T",
+        "J",
+        "F",
+        "P",
+        "RESOURCE_INVESTIGATOR",
+        "IMPLEMENTER",
+        "SHAPER",
+        "MONITOR_EVALUATOR",
+        "SPECIALIST",
+        "TEAM_WORKER",
+        "COORDINATOR",
+        "PLANT",
+        "COMPLETER_FINISHER"
+      ],
+      "required": true
     }
   }
 }

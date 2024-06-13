@@ -1229,6 +1229,60 @@ export interface ApiQuestionPersonalityQuestionPersonality
       'manyToMany',
       'api::test-personality.test-personality'
     >;
+    valueLeft: Attribute.Enumeration<
+      [
+        'E',
+        'I',
+        'S',
+        'N',
+        'T',
+        'J',
+        'F',
+        'P',
+        'RESOURCE_INVESTIGATOR',
+        'IMPLEMENTER',
+        'SHAPER',
+        'MONITOR_EVALUATOR',
+        'SPECIALIST',
+        'TEAM_WORKER',
+        'COORDINATOR',
+        'PLANT',
+        'COMPLETER_FINISHER'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    valueRight: Attribute.Enumeration<
+      [
+        'E',
+        'I',
+        'S',
+        'N',
+        'T',
+        'J',
+        'F',
+        'P',
+        'RESOURCE_INVESTIGATOR',
+        'IMPLEMENTER',
+        'SHAPER',
+        'MONITOR_EVALUATOR',
+        'SPECIALIST',
+        'TEAM_WORKER',
+        'COORDINATOR',
+        'PLANT',
+        'COMPLETER_FINISHER'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
