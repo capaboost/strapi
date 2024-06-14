@@ -61,10 +61,10 @@ export default {
       try {
         await strapi.entityService.update('api::user-order.user-order', orderId, {
           data: {
-            status: 'COMPLETED',
+            status: 'SHIPPED',
           },
         });
-        console.log(`Order ${orderId} has been updated to COMPLETED.`);
+        console.log(`Order ${orderId} has been updated to SHIPPED.`);
       } catch (error) {
         console.error('Error updating order:', error);
       }

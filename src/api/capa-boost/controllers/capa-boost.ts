@@ -15,6 +15,8 @@ export default {
     }
   },
 
+  // todo: rename it to placeOrder
+  // todo: replace it under user-order entity
   orders: async (ctx: any, next: any) => {
     try {
       const user = ctx.state.user;

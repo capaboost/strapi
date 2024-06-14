@@ -12,21 +12,8 @@ export default factories.createCoreController('api::user-order.user-order', ({ s
         return ctx.unauthorized('You must be logged in to view your orders');
       }
 
-      const userOrders = await strapi.entityService.findMany('api::user-order.user-order', {
-        filters: { user: user.id },
-        populate: {
-          items: {
-            populate: {
-              testPersonality: true, 
-            },
-          },
-        },
-      });
+      const userOrders = await strapi.service('api::user-order.user-order').myOrders(ctx);
 
-      /*ctx.body = {
-        message: 'User orders retrieved successfully',
-        data: userOrders,
-      };*/
       ctx.body = userOrders;
     } catch (err) {
       console.error('Error retrieving user orders:', err);

@@ -38,15 +38,15 @@ export default factories.createCoreController('api::test-personality.test-person
         return ctx.notFound('Test personality not found');
       }
 
-      // todo: check if order is set
-	    // todo: check if order is paid
-	    // todo: check if test is filled out or not
-	    // todo: if ok - show test with questions
-	    // const { test, questions, isLoading } = useQuestions(+id);
- 
-      // todo: get it from frontend - now its just fixed for testing purposes
-      // const generation = 'GEN_ALPHA';
-      // const group = 'YOUNG';
+      const userOrders = await strapi.service('api::user-order.user-order').myOrders(ctx); 
+      const shippedOrders = userOrders.filter((order) => order.status === 'SHIPPED');
+      const isPersonalityTestShipped = shippedOrders.some(order => 
+        order.items.some(item => item.testPersonality)
+      );
+      if (!isPersonalityTestShipped) {
+        return ctx.badRequest('You havent paid for the test. No access to resource.');
+      }
+	    
       const { generation, group } = getGeneration(user.birthYear);
       const FREQUENCY = 3;
 
