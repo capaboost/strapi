@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_tests",
+  "info": {
+    "singularName": "user-test",
+    "pluralName": "user-tests",
+    "displayName": "User Test"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "userTests"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "TEST_PERSONALITY",
+        "TEST_STATEMENT"
+      ],
+      "required": true
+    },
+    "uid": {
+      "type": "uid",
+      "required": true
+    },
+    "validTo": {
+      "type": "datetime",
+      "required": true
+    },
+    "data": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

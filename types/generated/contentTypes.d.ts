@@ -787,6 +787,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::user-order.user-order'
     >;
+    userTests: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::user-test.user-test'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1935,6 +1940,44 @@ export interface ApiUserStatementUserStatement extends Schema.CollectionType {
   };
 }
 
+export interface ApiUserTestUserTest extends Schema.CollectionType {
+  collectionName: 'user_tests';
+  info: {
+    singularName: 'user-test';
+    pluralName: 'user-tests';
+    displayName: 'User Test';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::user-test.user-test',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    type: Attribute.Enumeration<['TEST_PERSONALITY', 'TEST_STATEMENT']> &
+      Attribute.Required;
+    uid: Attribute.UID & Attribute.Required;
+    validTo: Attribute.DateTime & Attribute.Required;
+    data: Attribute.JSON & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-test.user-test',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-test.user-test',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiValueValue extends Schema.CollectionType {
   collectionName: 'values';
   info: {
@@ -2017,6 +2060,7 @@ declare module '@strapi/types' {
       'api::user-order.user-order': ApiUserOrderUserOrder;
       'api::user-order-item.user-order-item': ApiUserOrderItemUserOrderItem;
       'api::user-statement.user-statement': ApiUserStatementUserStatement;
+      'api::user-test.user-test': ApiUserTestUserTest;
       'api::value.value': ApiValueValue;
     }
   }

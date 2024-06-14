@@ -112,6 +112,12 @@
       "relation": "oneToMany",
       "target": "api::user-order.user-order",
       "mappedBy": "user"
+    },
+    "userTests": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-test.user-test",
+      "mappedBy": "user"
     }
   }
 }
