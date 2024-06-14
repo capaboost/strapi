@@ -1,0 +1,104 @@
+{
+  "MyPersonalityTest": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "number"
+      },
+      "uid": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "questions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "idQuestion": {
+              "type": "number"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "MBTI",
+                "BELBIN"
+              ]
+            },
+            "answerScale": {
+              "type": "number"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "id": {
+              "type": "number"
+            },
+            "title": {
+              "type": "string"
+            },
+            "subTitle": {
+              "type": "string"
+            },
+            "labelLeft": {
+              "type": "string"
+            },
+            "labelRight": {
+              "type": "string"
+            },
+            "valueLeft": {
+              "type": "string",
+              "enum": [
+                "E",
+                "I",
+                "S",
+                "N",
+                "T",
+                "J",
+                "F",
+                "P",
+                "RESOURCE_INVESTIGATOR",
+                "IMPLEMENTER",
+                "SHAPER",
+                "MONITOR_EVALUATOR",
+                "SPECIALIST",
+                "TEAM_WORKER",
+                "COORDINATOR",
+                "PLANT",
+                "COMPLETER_FINISHER"
+              ]
+            },
+            "valueRight": {
+              "type": "string",
+              "enum": [
+                "E",
+                "I",
+                "S",
+                "N",
+                "T",
+                "J",
+                "F",
+                "P",
+                "RESOURCE_INVESTIGATOR",
+                "IMPLEMENTER",
+                "SHAPER",
+                "MONITOR_EVALUATOR",
+                "SPECIALIST",
+                "TEAM_WORKER",
+                "COORDINATOR",
+                "PLANT",
+                "COMPLETER_FINISHER"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

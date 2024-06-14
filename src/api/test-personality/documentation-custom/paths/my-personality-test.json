@@ -1,0 +1,34 @@
+{
+	"/my-personality-test/{id}": {
+		"get": {
+			"operationId": "get/my-personality-test",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "",
+          "deprecated": false,
+          "required": true,
+          "schema": {
+            "type": "number"
+          }
+        }
+      ],
+			"tags": [
+				"Test-personality"
+			],
+			"responses": {
+				"200": {
+					"description": "OK",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/MyPersonalityTest"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
