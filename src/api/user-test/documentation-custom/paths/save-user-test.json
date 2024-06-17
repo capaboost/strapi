@@ -1,0 +1,22 @@
+{
+	"/save-user-test": {
+		"post": {
+			"operationId": "post/save-user-test",
+			"tags": [
+				"User-test"
+			],
+			"responses": {
+				"200": {
+					"description": "OK",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SaveUserTest"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
