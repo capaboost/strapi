@@ -5,13 +5,23 @@
 			"tags": [
 				"User-test"
 			],
+			"requestBody": {
+        "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveUserTestRequest"
+              }
+            }
+          }
+      },
 			"responses": {
 				"200": {
 					"description": "OK",
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/SaveUserTest"
+								"$ref": "#/components/schemas/UserTestResponseDataObject"
 							}
 						}
 					}

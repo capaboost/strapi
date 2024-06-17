@@ -1,23 +1,39 @@
 {
-  "SaveUserTest": {
+  "SaveUserTestRequest": {
     "type": "object",
+    "required": [
+      "data"
+    ],
     "properties": {
-      "id": {
-        "type": "number"
-      },
-      "type": {
-        "type": "string",
-        "enum": [
-          "TEST_PERSONALITY",
-          "TEST_STATEMENT"
-        ]
-      },
-      "validTo": {
-        "type": "string",
-        "format": "date-time"
-      },
-      "uid": {
-        "type": "string"
+      "data": {
+        "required": [
+          "name",
+          "charge"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "TEST_PERSONALITY",
+              "TEST_STATEMENT"
+            ]
+          },
+          "validTo": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "description": "A JSON object containing answered questions data"
+          }
+        }
       }
     }
   }
