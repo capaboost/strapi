@@ -32,6 +32,9 @@
           "data": {
             "type": "object",
             "description": "A JSON object containing answered questions data"
+          },
+          "orderId": {
+            "type": "number"
           }
         }
       }
