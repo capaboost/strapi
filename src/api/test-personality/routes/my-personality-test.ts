@@ -2,7 +2,7 @@ export default {
   routes: [
     {
       method: 'GET',
-      path: '/my-personality-test/:id',
+      path: '/my-personality-test/:id/:orderId',
       handler: 'test-personality.myPersonalityTest',
       config: {
         policies: [],

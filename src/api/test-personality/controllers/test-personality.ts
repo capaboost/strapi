@@ -13,9 +13,9 @@ export default factories.createCoreController('api::test-personality.test-person
         return ctx.unauthorized('You must be logged in to view your personality test');
       }
       
-      const { id } = ctx.params;
-      if (!id) {
-        return ctx.badRequest('ID is required');
+      const { id, orderId } = ctx.params;
+      if (!id || !orderId) {
+        return ctx.badRequest('ID and orderId are required');
       }
 
       const testPersonality = await strapi.entityService.findOne('api::test-personality.test-personality', id, {
@@ -38,13 +38,14 @@ export default factories.createCoreController('api::test-personality.test-person
         return ctx.notFound('Test personality not found');
       }
 
-      const userOrders = await strapi.service('api::user-order.user-order').myOrders(ctx); 
-      const shippedOrders = userOrders.filter((order) => order.status === 'SHIPPED');
-      const isPersonalityTestShipped = shippedOrders.some(order => 
+      const userOrders = await strapi.service('api::user-order.user-order').myOrders(ctx);
+      const shippedOrder = userOrders.find(order => 
+        order.id === +orderId &&
+        order.status === 'SHIPPED' &&
         order.items.some(item => item.testPersonality)
       );
-      if (!isPersonalityTestShipped) {
-        return ctx.badRequest('You havent paid for the test. No access to resource.');
+      if (!shippedOrder) {
+        return ctx.badRequest('You haven\'t paid for the test. No access to resource.');
       }
 	    
       const { generation, group } = getGeneration(user.birthYear);
