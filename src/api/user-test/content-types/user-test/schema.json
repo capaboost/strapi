@@ -4,7 +4,8 @@
   "info": {
     "singularName": "user-test",
     "pluralName": "user-tests",
-    "displayName": "User Test"
+    "displayName": "User Test",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -25,8 +26,8 @@
       ],
       "required": true
     },
-    "uid": {
-      "type": "uid",
+    "testUid": {
+      "type": "string",
       "required": true
     },
     "validTo": {

@@ -26,7 +26,7 @@
             "type": "string",
             "format": "date-time"
           },
-          "uid": {
+          "testUid": {
             "type": "string"
           },
           "data": {

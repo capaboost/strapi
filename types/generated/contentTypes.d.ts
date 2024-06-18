@@ -1946,6 +1946,7 @@ export interface ApiUserTestUserTest extends Schema.CollectionType {
     singularName: 'user-test';
     pluralName: 'user-tests';
     displayName: 'User Test';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1958,7 +1959,7 @@ export interface ApiUserTestUserTest extends Schema.CollectionType {
     >;
     type: Attribute.Enumeration<['TEST_PERSONALITY', 'TEST_STATEMENT']> &
       Attribute.Required;
-    uid: Attribute.UID & Attribute.Required;
+    testUid: Attribute.String & Attribute.Required;
     validTo: Attribute.DateTime & Attribute.Required;
     data: Attribute.JSON & Attribute.Required;
     createdAt: Attribute.DateTime;
