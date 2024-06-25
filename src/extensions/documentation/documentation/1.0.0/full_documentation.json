@@ -18,7 +18,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-06-21T15:46:29.305Z"
+    "x-generation-date": "2024-06-25T06:39:08.741Z"
   },
   "servers": [
     {
@@ -3216,6 +3216,7 @@
           "answerScale",
           "valueLeft",
           "valueRight",
+          "themeLabel",
           "locale"
         ],
         "type": "object",
@@ -3299,6 +3300,9 @@
               "COMPLETER_FINISHER"
             ]
           },
+          "themeLabel": {
+            "type": "string"
+          },
           "locale": {
             "type": "string"
           }
@@ -3315,7 +3319,8 @@
               "type",
               "answerScale",
               "valueLeft",
-              "valueRight"
+              "valueRight",
+              "themeLabel"
             ],
             "type": "object",
             "properties": {
@@ -3397,6 +3402,9 @@
                   "PLANT",
                   "COMPLETER_FINISHER"
                 ]
+              },
+              "themeLabel": {
+                "type": "string"
               },
               "locale": {
                 "type": "string"
@@ -3525,7 +3533,8 @@
           "type",
           "answerScale",
           "valueLeft",
-          "valueRight"
+          "valueRight",
+          "themeLabel"
         ],
         "properties": {
           "type": {
@@ -3728,6 +3737,9 @@
                                           "PLANT",
                                           "COMPLETER_FINISHER"
                                         ]
+                                      },
+                                      "themeLabel": {
+                                        "type": "string"
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -4149,6 +4161,9 @@
               "PLANT",
               "COMPLETER_FINISHER"
             ]
+          },
+          "themeLabel": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -8482,6 +8497,9 @@
                             "COMPLETER_FINISHER"
                           ]
                         },
+                        "themeLabel": {
+                          "type": "string"
+                        },
                         "createdAt": {
                           "type": "string",
                           "format": "date-time"
@@ -11206,6 +11224,9 @@
                                                                                 "COMPLETER_FINISHER"
                                                                               ]
                                                                             },
+                                                                            "themeLabel": {
+                                                                              "type": "string"
+                                                                            },
                                                                             "createdAt": {
                                                                               "type": "string",
                                                                               "format": "date-time"
@@ -12909,6 +12930,9 @@
                                                                   "COMPLETER_FINISHER"
                                                                 ]
                                                               },
+                                                              "themeLabel": {
+                                                                "type": "string"
+                                                              },
                                                               "createdAt": {
                                                                 "type": "string",
                                                                 "format": "date-time"
@@ -14348,6 +14372,9 @@
                                                                                 "PLANT",
                                                                                 "COMPLETER_FINISHER"
                                                                               ]
+                                                                            },
+                                                                            "themeLabel": {
+                                                                              "type": "string"
                                                                             },
                                                                             "createdAt": {
                                                                               "type": "string",
@@ -15920,6 +15947,9 @@
                                                                                 "PLANT",
                                                                                 "COMPLETER_FINISHER"
                                                                               ]
+                                                                            },
+                                                                            "themeLabel": {
+                                                                              "type": "string"
                                                                             },
                                                                             "createdAt": {
                                                                               "type": "string",

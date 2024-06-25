@@ -121,6 +121,15 @@
         "COMPLETER_FINISHER"
       ],
       "required": true
+    },
+    "themeLabel": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
     }
   }
 }

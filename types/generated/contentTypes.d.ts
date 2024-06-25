@@ -1288,6 +1288,13 @@ export interface ApiQuestionPersonalityQuestionPersonality
           localized: false;
         };
       }>;
+    themeLabel: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
