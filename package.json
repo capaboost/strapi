@@ -6,6 +6,7 @@
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
+    "prebuild": "cd src/plugins/custom-field && npm run build",
     "build": "strapi build",
     "strapi": "strapi",
     "fix-docs": "node src/utils/fix-docs.js"
