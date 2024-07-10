@@ -130,6 +130,16 @@
       },
       "type": "string",
       "required": true
+    },
+    "answersTemplate": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "answers-template.value"
     }
   }
 }

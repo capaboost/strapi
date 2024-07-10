@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_answer_templates",
+  "info": {
+    "name": "answer-template",
+    "icon": "adjust",
+    "description": "Template for answers"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "values": {
+      "type": "component",
+      "repeatable": true,
+      "component": "answer-template.value"
+    }
+  }
+}

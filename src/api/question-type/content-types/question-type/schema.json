@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "questions_type",
+  "info": {
+    "singularName": "question-type",
+    "pluralName": "questions-type",
+    "displayName": "Question Type"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "uid": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid"
+    }
+  }
+}

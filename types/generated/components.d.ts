@@ -1,5 +1,57 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface AnswersTemplateRoot extends Schema.Component {
+  collectionName: 'components_answer_templates';
+  info: {
+    name: 'answer-template';
+    icon: 'adjust';
+    description: 'Template for answers';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    values: Attribute.Component<'answer-template.value', true>;
+  };
+}
+
+export interface AnswersTemplateValue extends Schema.Component {
+  collectionName: 'components_answer_template_values';
+  info: {
+    name: 'value';
+    icon: 'adjust';
+    description: 'Single answer value for templates';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    value: Attribute.Enumeration<
+      [
+        'EMPTY',
+        'E',
+        'I',
+        'S',
+        'N',
+        'T',
+        'J',
+        'F',
+        'P',
+        'RESOURCE INVESTIGATOR',
+        'IMPLEMENTER',
+        'SHAPER',
+        'MONITOR EVALUATOR',
+        'SPECIALIST',
+        'TEAM WORKER',
+        'COORDINATOR',
+        'PLANT',
+        'COMPLETER FINISHER'
+      ]
+    > &
+      Attribute.Required;
+  };
+}
+
 export interface QuestionVariantsData extends Schema.Component {
   collectionName: 'components_question_variants_datas';
   info: {
@@ -46,6 +98,8 @@ export interface QuestionVariantsRoot extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'answers-template.root': AnswersTemplateRoot;
+      'answers-template.value': AnswersTemplateValue;
       'question-variants.data': QuestionVariantsData;
       'question-variants.group': QuestionVariantsGroup;
       'question-variants.root': QuestionVariantsRoot;

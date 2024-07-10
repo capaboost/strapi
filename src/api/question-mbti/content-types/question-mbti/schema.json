@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "questions_mbti",
+  "info": {
+    "singularName": "question-mbti",
+    "pluralName": "questions-mbti",
+    "displayName": "Question MBTI"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "uid": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid"
+    }
+  }
+}

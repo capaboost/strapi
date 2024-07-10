@@ -10,7 +10,9 @@
     "strapi": "strapi",
     "fix-docs": "node src/utils/fix-docs.js"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "typescript": "^5.5.3"
+  },
   "dependencies": {
     "@strapi/plugin-cloud": "4.20.3",
     "@strapi/plugin-documentation": "4.20.3",

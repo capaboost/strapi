@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_answer_template_values",
+  "info": {
+    "name": "value",
+    "icon": "adjust",
+    "description": "Single answer value for templates"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "value": {
+      "type": "enumeration",
+      "enum": [
+        "EMPTY",
+        "E",
+        "I",
+        "S",
+        "N",
+        "T",
+        "J",
+        "F",
+        "P",
+        "RESOURCE INVESTIGATOR",
+        "IMPLEMENTER",
+        "SHAPER",
+        "MONITOR EVALUATOR",
+        "SPECIALIST",
+        "TEAM WORKER",
+        "COORDINATOR",
+        "PLANT",
+        "COMPLETER FINISHER"
+      ],
+      "required": true
+    }
+  }
+}

@@ -1178,6 +1178,103 @@ export interface ApiProfessionProfession extends Schema.CollectionType {
   };
 }
 
+export interface ApiQuestionBelbinQuestionBelbin extends Schema.CollectionType {
+  collectionName: 'questions_belbin';
+  info: {
+    singularName: 'question-belbin';
+    pluralName: 'questions-belbin';
+    displayName: 'Question Belbin';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    uid: Attribute.UID &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    richText: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::question-belbin.question-belbin',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::question-belbin.question-belbin',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::question-belbin.question-belbin',
+      'oneToMany',
+      'api::question-belbin.question-belbin'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiQuestionMbtiQuestionMbti extends Schema.CollectionType {
+  collectionName: 'questions_mbti';
+  info: {
+    singularName: 'question-mbti';
+    pluralName: 'questions-mbti';
+    displayName: 'Question MBTI';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    uid: Attribute.UID &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::question-mbti.question-mbti',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::question-mbti.question-mbti',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::question-mbti.question-mbti',
+      'oneToMany',
+      'api::question-mbti.question-mbti'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiQuestionPersonalityQuestionPersonality
   extends Schema.CollectionType {
   collectionName: 'question_personalities';
@@ -1295,6 +1392,12 @@ export interface ApiQuestionPersonalityQuestionPersonality
           localized: true;
         };
       }>;
+    answersTemplate: Attribute.Component<'answers-template.value', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1313,6 +1416,51 @@ export interface ApiQuestionPersonalityQuestionPersonality
       'api::question-personality.question-personality',
       'oneToMany',
       'api::question-personality.question-personality'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiQuestionPointsQuestionPoints extends Schema.CollectionType {
+  collectionName: 'questions_points';
+  info: {
+    singularName: 'question-points';
+    pluralName: 'questions-points';
+    displayName: 'Question Points';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    uid: Attribute.UID &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::question-points.question-points',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::question-points.question-points',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::question-points.question-points',
+      'oneToMany',
+      'api::question-points.question-points'
     >;
     locale: Attribute.String;
   };
@@ -1397,6 +1545,51 @@ export interface ApiQuestionStatementQuestionStatement
       'api::question-statement.question-statement',
       'oneToMany',
       'api::question-statement.question-statement'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiQuestionTypeQuestionType extends Schema.CollectionType {
+  collectionName: 'questions_type';
+  info: {
+    singularName: 'question-type';
+    pluralName: 'questions-type';
+    displayName: 'Question Type';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    uid: Attribute.UID &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::question-type.question-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::question-type.question-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::question-type.question-type',
+      'oneToMany',
+      'api::question-type.question-type'
     >;
     locale: Attribute.String;
   };
@@ -2056,8 +2249,12 @@ declare module '@strapi/types' {
       'api::field.field': ApiFieldField;
       'api::hard-skill.hard-skill': ApiHardSkillHardSkill;
       'api::profession.profession': ApiProfessionProfession;
+      'api::question-belbin.question-belbin': ApiQuestionBelbinQuestionBelbin;
+      'api::question-mbti.question-mbti': ApiQuestionMbtiQuestionMbti;
       'api::question-personality.question-personality': ApiQuestionPersonalityQuestionPersonality;
+      'api::question-points.question-points': ApiQuestionPointsQuestionPoints;
       'api::question-statement.question-statement': ApiQuestionStatementQuestionStatement;
+      'api::question-type.question-type': ApiQuestionTypeQuestionType;
       'api::soft-skill.soft-skill': ApiSoftSkillSoftSkill;
       'api::specialization.specialization': ApiSpecializationSpecialization;
       'api::specialization-level.specialization-level': ApiSpecializationLevelSpecializationLevel;

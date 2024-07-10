@@ -7,4 +7,8 @@ export default () => ({
       },
     },
   },
+  'generation-enum': {
+    enabled: true,
+    resolve: './src/plugins/generation-enum'
+  },
 });
