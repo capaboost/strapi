@@ -4,7 +4,8 @@
   "info": {
     "singularName": "question-mbti",
     "pluralName": "questions-mbti",
-    "displayName": "Question MBTI"
+    "displayName": "Question MBTI",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -22,6 +23,15 @@
         }
       },
       "type": "uid"
+    },
+    "genTest": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "customField",
+      "customField": "global::text-field"
     }
   }
 }

@@ -7,4 +7,8 @@ export default () => ({
       },
     },
   },
+  'custom-field': {
+    enabled: true,
+    resolve: './src/plugins/custom-field'
+  }
 });

@@ -18,7 +18,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-07-10T13:37:15.537Z"
+    "x-generation-date": "2024-07-10T14:43:10.984Z"
   },
   "servers": [
     {
@@ -3220,6 +3220,9 @@
             "type": "string"
           },
           "richText": {},
+          "test": {
+            "type": "string"
+          },
           "locale": {
             "type": "string"
           }
@@ -3238,6 +3241,9 @@
                 "type": "string"
               },
               "richText": {},
+              "test": {
+                "type": "string"
+              },
               "locale": {
                 "type": "string"
               }
@@ -3366,6 +3372,9 @@
             "type": "string"
           },
           "richText": {},
+          "test": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -3707,6 +3716,9 @@
           "uid": {
             "type": "string"
           },
+          "genTest": {
+            "type": "string"
+          },
           "locale": {
             "type": "string"
           }
@@ -3722,6 +3734,9 @@
             "type": "object",
             "properties": {
               "uid": {
+                "type": "string"
+              },
+              "genTest": {
                 "type": "string"
               },
               "locale": {
@@ -3849,6 +3864,9 @@
         "type": "object",
         "properties": {
           "uid": {
+            "type": "string"
+          },
+          "genTest": {
             "type": "string"
           },
           "createdAt": {

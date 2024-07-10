@@ -1212,6 +1212,13 @@ export interface ApiQuestionBelbinQuestionBelbin extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    test: Attribute.String &
+      Attribute.CustomField<'global::text-field'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1241,6 +1248,7 @@ export interface ApiQuestionMbtiQuestionMbti extends Schema.CollectionType {
     singularName: 'question-mbti';
     pluralName: 'questions-mbti';
     displayName: 'Question MBTI';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1255,6 +1263,13 @@ export interface ApiQuestionMbtiQuestionMbti extends Schema.CollectionType {
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+      }>;
+    genTest: Attribute.String &
+      Attribute.CustomField<'global::text-field'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;
