@@ -4,6 +4,7 @@
 
 import { factories } from '@strapi/strapi'
 import getGeneration from '../../../utils/getGeneration';
+import questionMbti from '../../question-mbti/controllers/question-mbti';
 
 export default factories.createCoreController('api::test-personality.test-personality', ({ strapi }) => ({
   myPersonalityTest: async (ctx, next) => {
@@ -18,29 +19,20 @@ export default factories.createCoreController('api::test-personality.test-person
         return ctx.badRequest('ID and orderId are required');
       }
       
-      /*
+      
       const testPersonality = await strapi.entityService.findOne('api::test-personality.test-personality', id, {
         populate: {
-          questions: {
-            populate: {
-              variants: {
-                populate: {
-                  data: {
-                    populate: 'data',
-                  },
-                },
-              },
-            },
-          },
-        },
+          questionsMBTI: true,
+          questionsBelbin: true,
+          questionsPoints: true,
+          questionsColorType: true,
+        }
       });
-      */
-
-      /*
+      console.log('test personality: ', testPersonality);
+      
       if (!testPersonality) {
         return ctx.notFound('Test personality not found');
       }
-        */
 
       const userOrders = await strapi.service('api::user-order.user-order').myOrders(ctx);
       const shippedOrder = userOrders.find(order => 
@@ -128,14 +120,15 @@ export default factories.createCoreController('api::test-personality.test-person
 
       // const finalQuestions = generateQuestions(filteredQuestions);
       ctx.send({
-        // id: testPersonality.id,
-        // uid: testPersonality.uid,
-        // name: testPersonality.name,
+        id: testPersonality.id,
+        uid: testPersonality.uid,
+        name: testPersonality.name,
         // questions: finalQuestions,
-        id: 'todo: id',
-        uid: 'todo: uid',
-        name: 'todo: name',
-        questions: [],
+        questions: testPersonality.questionsMBTI,
+        questionsMBTI: testPersonality.questionsMBTI,
+        questionsBelbin: testPersonality.questionsBelbin,
+        questionsPoints: testPersonality.questionsPoints,
+        questionsColorType: testPersonality.questionsColorType,
       });
     } catch(err) {
       // todo
