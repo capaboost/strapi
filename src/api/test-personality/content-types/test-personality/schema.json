@@ -44,12 +44,6 @@
       "required": true,
       "default": 12
     },
-    "questions": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::question-personality.question-personality",
-      "mappedBy": "testPersonalities"
-    },
     "uid": {
       "pluginOptions": {
         "i18n": {

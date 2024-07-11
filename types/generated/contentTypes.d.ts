@@ -1782,152 +1782,6 @@ export interface ApiQuestionMbtiQuestionMbti extends Schema.CollectionType {
   };
 }
 
-export interface ApiQuestionPersonalityQuestionPersonality
-  extends Schema.CollectionType {
-  collectionName: 'question_personalities';
-  info: {
-    singularName: 'question-personality';
-    pluralName: 'question-personalities';
-    displayName: 'Question Personality';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    type: Attribute.Enumeration<['MBTI', 'BELBIN', 'STRUCTOGRAM', 'GALLUP']> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    description: Attribute.RichText &
-      Attribute.Private &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    answerScale: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }> &
-      Attribute.SetMinMax<
-        {
-          min: 2;
-        },
-        number
-      >;
-    variants: Attribute.Component<'question-variants.root', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    testPersonalities: Attribute.Relation<
-      'api::question-personality.question-personality',
-      'manyToMany',
-      'api::test-personality.test-personality'
-    >;
-    valueLeft: Attribute.Enumeration<
-      [
-        'E',
-        'I',
-        'S',
-        'N',
-        'T',
-        'J',
-        'F',
-        'P',
-        'RESOURCE_INVESTIGATOR',
-        'IMPLEMENTER',
-        'SHAPER',
-        'MONITOR_EVALUATOR',
-        'SPECIALIST',
-        'TEAM_WORKER',
-        'COORDINATOR',
-        'PLANT',
-        'COMPLETER_FINISHER'
-      ]
-    > &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    valueRight: Attribute.Enumeration<
-      [
-        'E',
-        'I',
-        'S',
-        'N',
-        'T',
-        'J',
-        'F',
-        'P',
-        'RESOURCE_INVESTIGATOR',
-        'IMPLEMENTER',
-        'SHAPER',
-        'MONITOR_EVALUATOR',
-        'SPECIALIST',
-        'TEAM_WORKER',
-        'COORDINATOR',
-        'PLANT',
-        'COMPLETER_FINISHER'
-      ]
-    > &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    themeLabel: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    answersTemplate: Attribute.Component<'answers-template.value', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::question-personality.question-personality',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::question-personality.question-personality',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::question-personality.question-personality',
-      'oneToMany',
-      'api::question-personality.question-personality'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface ApiQuestionPointsQuestionPoints extends Schema.CollectionType {
   collectionName: 'questions_points';
   info: {
@@ -2520,11 +2374,6 @@ export interface ApiTestPersonalityTestPersonality
         };
       }> &
       Attribute.DefaultTo<12>;
-    questions: Attribute.Relation<
-      'api::test-personality.test-personality',
-      'manyToMany',
-      'api::question-personality.question-personality'
-    >;
     uid: Attribute.UID &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -2932,7 +2781,6 @@ declare module '@strapi/types' {
       'api::question-belbin.question-belbin': ApiQuestionBelbinQuestionBelbin;
       'api::question-color-type.question-color-type': ApiQuestionColorTypeQuestionColorType;
       'api::question-mbti.question-mbti': ApiQuestionMbtiQuestionMbti;
-      'api::question-personality.question-personality': ApiQuestionPersonalityQuestionPersonality;
       'api::question-points.question-points': ApiQuestionPointsQuestionPoints;
       'api::question-statement.question-statement': ApiQuestionStatementQuestionStatement;
       'api::soft-skill.soft-skill': ApiSoftSkillSoftSkill;

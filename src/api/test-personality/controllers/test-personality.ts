@@ -17,7 +17,8 @@ export default factories.createCoreController('api::test-personality.test-person
       if (!id || !orderId) {
         return ctx.badRequest('ID and orderId are required');
       }
-
+      
+      /*
       const testPersonality = await strapi.entityService.findOne('api::test-personality.test-personality', id, {
         populate: {
           questions: {
@@ -33,10 +34,13 @@ export default factories.createCoreController('api::test-personality.test-person
           },
         },
       });
+      */
 
+      /*
       if (!testPersonality) {
         return ctx.notFound('Test personality not found');
       }
+        */
 
       const userOrders = await strapi.service('api::user-order.user-order').myOrders(ctx);
       const shippedOrder = userOrders.find(order => 
@@ -51,6 +55,7 @@ export default factories.createCoreController('api::test-personality.test-person
       const { generation, group } = getGeneration(user.birthYear);
       const FREQUENCY = 3;
 
+      /*
       const filteredQuestions = testPersonality.questions.map((question) => {
         const filteredVariants = question.variants.filter((variant) => 
           variant.generation === generation &&
@@ -79,6 +84,7 @@ export default factories.createCoreController('api::test-personality.test-person
           variants: flattenedVariants
         };
       }).filter((question) => question !== null);
+      */
 
       const limitQuestions = (questions) => {
         return questions.map((question) => {
@@ -120,12 +126,16 @@ export default factories.createCoreController('api::test-personality.test-person
         return mappedQuestions;
       };
 
-      const finalQuestions = generateQuestions(filteredQuestions);
+      // const finalQuestions = generateQuestions(filteredQuestions);
       ctx.send({
-        id: testPersonality.id,
-        uid: testPersonality.uid,
-        name: testPersonality.name,
-        questions: finalQuestions,
+        // id: testPersonality.id,
+        // uid: testPersonality.uid,
+        // name: testPersonality.name,
+        // questions: finalQuestions,
+        id: 'todo: id',
+        uid: 'todo: uid',
+        name: 'todo: name',
+        questions: [],
       });
     } catch(err) {
       // todo
