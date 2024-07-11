@@ -1,5 +1,5 @@
 {
-  "/questions-type": {
+  "/questions-color-type": {
     "get": {
       "responses": {
         "200": {
@@ -7,7 +7,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/QuestionTypeListResponse"
+                "$ref": "#/components/schemas/QuestionColorTypeListResponse"
               }
             }
           }
@@ -64,7 +64,7 @@
         }
       },
       "tags": [
-        "Question-type"
+        "Question-color-type"
       ],
       "parameters": [
         {
@@ -169,7 +169,7 @@
           }
         }
       ],
-      "operationId": "get/questions-type"
+      "operationId": "get/questions-color-type"
     },
     "post": {
       "responses": {
@@ -178,7 +178,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/QuestionTypeResponse"
+                "$ref": "#/components/schemas/QuestionColorTypeResponse"
               }
             }
           }
@@ -235,23 +235,23 @@
         }
       },
       "tags": [
-        "Question-type"
+        "Question-color-type"
       ],
       "parameters": [],
-      "operationId": "post/questions-type",
+      "operationId": "post/questions-color-type",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/QuestionTypeRequest"
+              "$ref": "#/components/schemas/QuestionColorTypeRequest"
             }
           }
         }
       }
     }
   },
-  "/questions-type/{id}": {
+  "/questions-color-type/{id}": {
     "get": {
       "responses": {
         "200": {
@@ -259,7 +259,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/QuestionTypeResponse"
+                "$ref": "#/components/schemas/QuestionColorTypeResponse"
               }
             }
           }
@@ -316,7 +316,7 @@
         }
       },
       "tags": [
-        "Question-type"
+        "Question-color-type"
       ],
       "parameters": [
         {
@@ -330,7 +330,7 @@
           }
         }
       ],
-      "operationId": "get/questions-type/{id}"
+      "operationId": "get/questions-color-type/{id}"
     },
     "put": {
       "responses": {
@@ -339,7 +339,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/QuestionTypeResponse"
+                "$ref": "#/components/schemas/QuestionColorTypeResponse"
               }
             }
           }
@@ -396,7 +396,7 @@
         }
       },
       "tags": [
-        "Question-type"
+        "Question-color-type"
       ],
       "parameters": [
         {
@@ -410,13 +410,13 @@
           }
         }
       ],
-      "operationId": "put/questions-type/{id}",
+      "operationId": "put/questions-color-type/{id}",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/QuestionTypeRequest"
+              "$ref": "#/components/schemas/QuestionColorTypeRequest"
             }
           }
         }
@@ -487,7 +487,7 @@
         }
       },
       "tags": [
-        "Question-type"
+        "Question-color-type"
       ],
       "parameters": [
         {
@@ -501,10 +501,10 @@
           }
         }
       ],
-      "operationId": "delete/questions-type/{id}"
+      "operationId": "delete/questions-color-type/{id}"
     }
   },
-  "/questions-type/{id}/localizations": {
+  "/questions-color-type/{id}/localizations": {
     "post": {
       "responses": {
         "200": {
@@ -512,7 +512,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/QuestionTypeLocalizationResponse"
+                "$ref": "#/components/schemas/QuestionColorTypeLocalizationResponse"
               }
             }
           }
@@ -569,7 +569,7 @@
         }
       },
       "tags": [
-        "Question-type"
+        "Question-color-type"
       ],
       "parameters": [
         {
@@ -583,13 +583,13 @@
           }
         }
       ],
-      "operationId": "post/questions-type/{id}/localizations",
+      "operationId": "post/questions-color-type/{id}/localizations",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/QuestionTypeLocalizationRequest"
+              "$ref": "#/components/schemas/QuestionColorTypeLocalizationRequest"
             }
           }
         }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "question-points",
     "pluralName": "questions-points",
-    "displayName": "Question Points"
+    "displayName": "Question Points",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -15,13 +16,255 @@
     }
   },
   "attributes": {
-    "uid": {
+    "title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "uid"
+      "type": "string",
+      "required": true
+    },
+    "subTitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "answer1Label": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "answer1Points": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer",
+      "required": true
+    },
+    "answer2Label": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "answer2Points": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer",
+      "required": true
+    },
+    "answer3Label": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "answer3Points": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer",
+      "required": false
+    },
+    "answer4Label": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "answer4Points": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    },
+    "answer5Label": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "answer5Points": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    },
+    "answer6Label": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "answer6Points": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    },
+    "answer7Label": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "answer7Points": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    },
+    "answer8Label": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "answer8Points": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    },
+    "answer9Label": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "answer9Points": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    },
+    "answer10Label": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "answer10Points": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    },
+    "generation": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "GEN_MULTI",
+        "GEN_W",
+        "GEN_W_OLD",
+        "GEN_W_MIDDLE",
+        "GEN_W_YOUNG",
+        "GEN_X",
+        "GEN_X_OLD",
+        "GEN_X_MIDDLE",
+        "GEN_X_YOUNG",
+        "GEN_Y",
+        "GEN_Y_OLD",
+        "GEN_Y_MIDDLE",
+        "GEN_Y_YOUNG",
+        "GEN_Z",
+        "GEN_Z_OLD",
+        "GEN_Z_MIDDLE",
+        "GEN_Z_YOUNG",
+        "GEN_ALPHA",
+        "GEN_ALPHA_OLD",
+        "GEN_ALPHA_MIDDLE",
+        "GEN_ALPHA_YOUNG",
+        "GEN_BETA",
+        "GEN_BETA_OLD",
+        "GEN_BETA_MIDDLE",
+        "GEN_BETA_YOUNG"
+      ],
+      "default": "GEN_MULTI",
+      "required": true
+    },
+    "age": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "PRE_TEENAGERS",
+        "YOUNG_TEENAGERS",
+        "OLD_TEENAGERS",
+        "YOUNG_ADULTS",
+        "EMERGING_ADULTS",
+        "MIDDLE_AGES_ADULTS",
+        "SENIOR_ADULTS",
+        "ELDERS"
+      ],
+      "required": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::points-question-category.points-question-category",
+      "inversedBy": "questions"
+    },
+    "testsPersonality": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::test-personality.test-personality",
+      "mappedBy": "questionsPoints"
     }
   }
 }

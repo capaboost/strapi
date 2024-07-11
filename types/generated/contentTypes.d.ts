@@ -1137,6 +1137,112 @@ export interface ApiHardSkillHardSkill extends Schema.CollectionType {
   };
 }
 
+export interface ApiMbtiQuestionCategoryMbtiQuestionCategory
+  extends Schema.CollectionType {
+  collectionName: 'mbti_question_categories';
+  info: {
+    singularName: 'mbti-question-category';
+    pluralName: 'mbti-question-categories';
+    displayName: 'MBTI Question Category';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    questions: Attribute.Relation<
+      'api::mbti-question-category.mbti-question-category',
+      'oneToMany',
+      'api::question-mbti.question-mbti'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::mbti-question-category.mbti-question-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::mbti-question-category.mbti-question-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::mbti-question-category.mbti-question-category',
+      'oneToMany',
+      'api::mbti-question-category.mbti-question-category'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiPointsQuestionCategoryPointsQuestionCategory
+  extends Schema.CollectionType {
+  collectionName: 'points_question_categories';
+  info: {
+    singularName: 'points-question-category';
+    pluralName: 'points-question-categories';
+    displayName: 'Points Question Category';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    questions: Attribute.Relation<
+      'api::points-question-category.points-question-category',
+      'oneToMany',
+      'api::question-points.question-points'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::points-question-category.points-question-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::points-question-category.points-question-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::points-question-category.points-question-category',
+      'oneToMany',
+      'api::points-question-category.points-question-category'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiProfessionProfession extends Schema.CollectionType {
   collectionName: 'professions';
   info: {
@@ -1200,25 +1306,138 @@ export interface ApiQuestionBelbinQuestionBelbin extends Schema.CollectionType {
     };
   };
   attributes: {
-    uid: Attribute.UID &
+    title: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    richText: Attribute.Blocks &
+    subTitle: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    test: Attribute.String &
-      Attribute.CustomField<'global::text-field'> &
+    noRole: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    resourceInvestigator: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    teamWorker: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    coOrdinator: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    plant: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    monitorEvaluator: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    specialist: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    shaper: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    implementer: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    completerFinisher: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    generation: Attribute.Enumeration<
+      [
+        'GEN_MULTI',
+        'GEN_W',
+        'GEN_W_OLD',
+        'GEN_W_MIDDLE',
+        'GEN_W_YOUNG',
+        'GEN_X',
+        'GEN_X_OLD',
+        'GEN_X_MIDDLE',
+        'GEN_X_YOUNG',
+        'GEN_Y',
+        'GEN_Y_OLD',
+        'GEN_Y_MIDDLE',
+        'GEN_Y_YOUNG',
+        'GEN_Z',
+        'GEN_Z_OLD',
+        'GEN_Z_MIDDLE',
+        'GEN_Z_YOUNG',
+        'GEN_ALPHA',
+        'GEN_ALPHA_OLD',
+        'GEN_ALPHA_MIDDLE',
+        'GEN_ALPHA_YOUNG',
+        'GEN_BETA',
+        'GEN_BETA_OLD',
+        'GEN_BETA_MIDDLE',
+        'GEN_BETA_YOUNG'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<'GEN_MULTI'>;
+    age: Attribute.Enumeration<
+      [
+        'PRE_TEENAGERS',
+        'YOUNG_TEENAGERS',
+        'OLD_TEENAGERS',
+        'YOUNG_ADULTS',
+        'EMERGING_ADULTS',
+        'MIDDLE_AGES_ADULTS',
+        'SENIOR_ADULTS',
+        'ELDERS'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    testsPersonality: Attribute.Relation<
+      'api::question-belbin.question-belbin',
+      'manyToMany',
+      'api::test-personality.test-personality'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1242,6 +1461,147 @@ export interface ApiQuestionBelbinQuestionBelbin extends Schema.CollectionType {
   };
 }
 
+export interface ApiQuestionColorTypeQuestionColorType
+  extends Schema.CollectionType {
+  collectionName: 'questions_color_type';
+  info: {
+    singularName: 'question-color-type';
+    pluralName: 'questions-color-type';
+    displayName: 'Question Color Type';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    subTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    yellow: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    red: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    blue: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    green: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    generation: Attribute.Enumeration<
+      [
+        'GEN_MULTI',
+        'GEN_W',
+        'GEN_W_OLD',
+        'GEN_W_MIDDLE',
+        'GEN_W_YOUNG',
+        'GEN_X',
+        'GEN_X_OLD',
+        'GEN_X_MIDDLE',
+        'GEN_X_YOUNG',
+        'GEN_Y',
+        'GEN_Y_OLD',
+        'GEN_Y_MIDDLE',
+        'GEN_Y_YOUNG',
+        'GEN_Z',
+        'GEN_Z_OLD',
+        'GEN_Z_MIDDLE',
+        'GEN_Z_YOUNG',
+        'GEN_ALPHA',
+        'GEN_ALPHA_OLD',
+        'GEN_ALPHA_MIDDLE',
+        'GEN_ALPHA_YOUNG',
+        'GEN_BETA',
+        'GEN_BETA_OLD',
+        'GEN_BETA_MIDDLE',
+        'GEN_BETA_YOUNG'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<'GEN_MULTI'>;
+    age: Attribute.Enumeration<
+      [
+        'PRE_TEENAGERS',
+        'YOUNG_TEENAGERS',
+        'OLD_TEENAGERS',
+        'YOUNG_ADULTS',
+        'EMERGING_ADULTS',
+        'MIDDLE_AGES_ADULTS',
+        'SENIOR_ADULTS',
+        'ELDERS'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    testsPersonality: Attribute.Relation<
+      'api::question-color-type.question-color-type',
+      'manyToMany',
+      'api::test-personality.test-personality'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::question-color-type.question-color-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::question-color-type.question-color-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::question-color-type.question-color-type',
+      'oneToMany',
+      'api::question-color-type.question-color-type'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiQuestionMbtiQuestionMbti extends Schema.CollectionType {
   collectionName: 'questions_mbti';
   info: {
@@ -1259,19 +1619,146 @@ export interface ApiQuestionMbtiQuestionMbti extends Schema.CollectionType {
     };
   };
   attributes: {
-    uid: Attribute.UID &
+    title: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    genTest: Attribute.String &
-      Attribute.CustomField<'global::text-field'> &
+    subTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    typeLeft: Attribute.Enumeration<
+      [
+        'EXTRAVERSION',
+        'INTROVERSION',
+        'SENSING',
+        'INTUITION',
+        'THINKING',
+        'FEELING',
+        'JUDGING',
+        'PERCEIVING'
+      ]
+    > &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
         };
       }>;
+    typeRight: Attribute.Enumeration<
+      [
+        'EXTRAVERSION',
+        'INTROVERSION',
+        'SENSING',
+        'INTUITION',
+        'THINKING',
+        'FEELING',
+        'JUDGING',
+        'PERCEIVING'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    labelLeft: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    labelRight: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    category: Attribute.Relation<
+      'api::question-mbti.question-mbti',
+      'manyToOne',
+      'api::mbti-question-category.mbti-question-category'
+    >;
+    answerScale: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.SetMinMax<
+        {
+          min: 2;
+        },
+        number
+      >;
+    generation: Attribute.Enumeration<
+      [
+        'GEN_MULTI',
+        'GEN_W',
+        'GEN_W_OLD',
+        'GEN_W_MIDDLE',
+        'GEN_W_YOUNG',
+        'GEN_X',
+        'GEN_X_OLD',
+        'GEN_X_MIDDLE',
+        'GEN_X_YOUNG',
+        'GEN_Y',
+        'GEN_Y_OLD',
+        'GEN_Y_MIDDLE',
+        'GEN_Y_YOUNG',
+        'GEN_Z',
+        'GEN_Z_OLD',
+        'GEN_Z_MIDDLE',
+        'GEN_Z_YOUNG',
+        'GEN_ALPHA',
+        'GEN_ALPHA_OLD',
+        'GEN_ALPHA_MIDDLE',
+        'GEN_ALPHA_YOUNG',
+        'GEN_BETA',
+        'GEN_BETA_OLD',
+        'GEN_BETA_MIDDLE',
+        'GEN_BETA_YOUNG'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<'GEN_MULTI'>;
+    age: Attribute.Enumeration<
+      [
+        'PRE_TEENAGERS',
+        'YOUNG_TEENAGERS',
+        'OLD_TEENAGERS',
+        'YOUNG_ADULTS',
+        'EMERGING_ADULTS',
+        'MIDDLE_AGES_ADULTS',
+        'SENIOR_ADULTS',
+        'ELDERS'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    testsPersonality: Attribute.Relation<
+      'api::question-mbti.question-mbti',
+      'manyToMany',
+      'api::test-personality.test-personality'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1447,6 +1934,7 @@ export interface ApiQuestionPointsQuestionPoints extends Schema.CollectionType {
     singularName: 'question-points';
     pluralName: 'questions-points';
     displayName: 'Question Points';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1457,12 +1945,207 @@ export interface ApiQuestionPointsQuestionPoints extends Schema.CollectionType {
     };
   };
   attributes: {
-    uid: Attribute.UID &
+    title: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    subTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer1Label: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer1Points: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer2Label: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer2Points: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer3Label: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer3Points: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer4Label: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer4Points: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer5Label: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer5Points: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer6Label: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer6Points: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer7Label: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer7Points: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer8Label: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer8Points: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer9Label: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer9Points: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer10Label: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    answer10Points: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    generation: Attribute.Enumeration<
+      [
+        'GEN_MULTI',
+        'GEN_W',
+        'GEN_W_OLD',
+        'GEN_W_MIDDLE',
+        'GEN_W_YOUNG',
+        'GEN_X',
+        'GEN_X_OLD',
+        'GEN_X_MIDDLE',
+        'GEN_X_YOUNG',
+        'GEN_Y',
+        'GEN_Y_OLD',
+        'GEN_Y_MIDDLE',
+        'GEN_Y_YOUNG',
+        'GEN_Z',
+        'GEN_Z_OLD',
+        'GEN_Z_MIDDLE',
+        'GEN_Z_YOUNG',
+        'GEN_ALPHA',
+        'GEN_ALPHA_OLD',
+        'GEN_ALPHA_MIDDLE',
+        'GEN_ALPHA_YOUNG',
+        'GEN_BETA',
+        'GEN_BETA_OLD',
+        'GEN_BETA_MIDDLE',
+        'GEN_BETA_YOUNG'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<'GEN_MULTI'>;
+    age: Attribute.Enumeration<
+      [
+        'PRE_TEENAGERS',
+        'YOUNG_TEENAGERS',
+        'OLD_TEENAGERS',
+        'YOUNG_ADULTS',
+        'EMERGING_ADULTS',
+        'MIDDLE_AGES_ADULTS',
+        'SENIOR_ADULTS',
+        'ELDERS'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    category: Attribute.Relation<
+      'api::question-points.question-points',
+      'manyToOne',
+      'api::points-question-category.points-question-category'
+    >;
+    testsPersonality: Attribute.Relation<
+      'api::question-points.question-points',
+      'manyToMany',
+      'api::test-personality.test-personality'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1565,51 +2248,6 @@ export interface ApiQuestionStatementQuestionStatement
       'api::question-statement.question-statement',
       'oneToMany',
       'api::question-statement.question-statement'
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiQuestionTypeQuestionType extends Schema.CollectionType {
-  collectionName: 'questions_type';
-  info: {
-    singularName: 'question-type';
-    pluralName: 'questions-type';
-    displayName: 'Question Type';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    uid: Attribute.UID &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::question-type.question-type',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::question-type.question-type',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::question-type.question-type',
-      'oneToMany',
-      'api::question-type.question-type'
     >;
     locale: Attribute.String;
   };
@@ -1894,6 +2532,26 @@ export interface ApiTestPersonalityTestPersonality
           localized: true;
         };
       }>;
+    questionsMBTI: Attribute.Relation<
+      'api::test-personality.test-personality',
+      'manyToMany',
+      'api::question-mbti.question-mbti'
+    >;
+    questionsBelbin: Attribute.Relation<
+      'api::test-personality.test-personality',
+      'manyToMany',
+      'api::question-belbin.question-belbin'
+    >;
+    questionsPoints: Attribute.Relation<
+      'api::test-personality.test-personality',
+      'manyToMany',
+      'api::question-points.question-points'
+    >;
+    questionsColorType: Attribute.Relation<
+      'api::test-personality.test-personality',
+      'manyToMany',
+      'api::question-color-type.question-color-type'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2268,13 +2926,15 @@ declare module '@strapi/types' {
       'api::event-template.event-template': ApiEventTemplateEventTemplate;
       'api::field.field': ApiFieldField;
       'api::hard-skill.hard-skill': ApiHardSkillHardSkill;
+      'api::mbti-question-category.mbti-question-category': ApiMbtiQuestionCategoryMbtiQuestionCategory;
+      'api::points-question-category.points-question-category': ApiPointsQuestionCategoryPointsQuestionCategory;
       'api::profession.profession': ApiProfessionProfession;
       'api::question-belbin.question-belbin': ApiQuestionBelbinQuestionBelbin;
+      'api::question-color-type.question-color-type': ApiQuestionColorTypeQuestionColorType;
       'api::question-mbti.question-mbti': ApiQuestionMbtiQuestionMbti;
       'api::question-personality.question-personality': ApiQuestionPersonalityQuestionPersonality;
       'api::question-points.question-points': ApiQuestionPointsQuestionPoints;
       'api::question-statement.question-statement': ApiQuestionStatementQuestionStatement;
-      'api::question-type.question-type': ApiQuestionTypeQuestionType;
       'api::soft-skill.soft-skill': ApiSoftSkillSoftSkill;
       'api::specialization.specialization': ApiSpecializationSpecialization;
       'api::specialization-level.specialization-level': ApiSpecializationLevelSpecializationLevel;

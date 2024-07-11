@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "questions_mbti",
+  "collectionName": "questions_color_type",
   "info": {
-    "singularName": "question-mbti",
-    "pluralName": "questions-mbti",
-    "displayName": "Question MBTI",
+    "singularName": "question-color-type",
+    "pluralName": "questions-color-type",
+    "displayName": "Question Color Type",
     "description": ""
   },
   "options": {
@@ -33,77 +33,41 @@
       },
       "type": "string"
     },
-    "typeLeft": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "enumeration",
-      "enum": [
-        "EXTRAVERSION",
-        "INTROVERSION",
-        "SENSING",
-        "INTUITION",
-        "THINKING",
-        "FEELING",
-        "JUDGING",
-        "PERCEIVING"
-      ],
-      "required": true
-    },
-    "typeRight": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "enumeration",
-      "enum": [
-        "EXTRAVERSION",
-        "INTROVERSION",
-        "SENSING",
-        "INTUITION",
-        "THINKING",
-        "FEELING",
-        "JUDGING",
-        "PERCEIVING"
-      ],
-      "required": true
-    },
-    "labelLeft": {
+    "yellow": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "text",
+      "type": "string",
       "required": true
     },
-    "labelRight": {
+    "red": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "text",
+      "type": "string",
       "required": true
     },
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::mbti-question-category.mbti-question-category",
-      "inversedBy": "questions"
-    },
-    "answerScale": {
+    "blue": {
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       },
-      "type": "integer",
-      "required": true,
-      "min": 2
+      "type": "string",
+      "required": true
+    },
+    "green": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
     },
     "generation": {
       "pluginOptions": {
@@ -165,7 +129,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::test-personality.test-personality",
-      "inversedBy": "questionsMBTI"
+      "mappedBy": "questionsColorType"
     }
   }
 }

@@ -16,30 +16,164 @@
     }
   },
   "attributes": {
-    "uid": {
+    "title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "uid"
+      "type": "string",
+      "required": true
     },
-    "richText": {
+    "subTitle": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "blocks"
+      "type": "string"
     },
-    "test": {
+    "noRole": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "customField",
-      "customField": "global::text-field"
+      "type": "text"
+    },
+    "resourceInvestigator": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "teamWorker": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "coOrdinator": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "plant": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "monitorEvaluator": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "specialist": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "shaper": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "implementer": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "completerFinisher": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
+    },
+    "generation": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "GEN_MULTI",
+        "GEN_W",
+        "GEN_W_OLD",
+        "GEN_W_MIDDLE",
+        "GEN_W_YOUNG",
+        "GEN_X",
+        "GEN_X_OLD",
+        "GEN_X_MIDDLE",
+        "GEN_X_YOUNG",
+        "GEN_Y",
+        "GEN_Y_OLD",
+        "GEN_Y_MIDDLE",
+        "GEN_Y_YOUNG",
+        "GEN_Z",
+        "GEN_Z_OLD",
+        "GEN_Z_MIDDLE",
+        "GEN_Z_YOUNG",
+        "GEN_ALPHA",
+        "GEN_ALPHA_OLD",
+        "GEN_ALPHA_MIDDLE",
+        "GEN_ALPHA_YOUNG",
+        "GEN_BETA",
+        "GEN_BETA_OLD",
+        "GEN_BETA_MIDDLE",
+        "GEN_BETA_YOUNG"
+      ],
+      "required": true,
+      "default": "GEN_MULTI"
+    },
+    "age": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "PRE_TEENAGERS",
+        "YOUNG_TEENAGERS",
+        "OLD_TEENAGERS",
+        "YOUNG_ADULTS",
+        "EMERGING_ADULTS",
+        "MIDDLE_AGES_ADULTS",
+        "SENIOR_ADULTS",
+        "ELDERS"
+      ],
+      "required": true
+    },
+    "testsPersonality": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::test-personality.test-personality",
+      "mappedBy": "questionsBelbin"
     }
   }
 }

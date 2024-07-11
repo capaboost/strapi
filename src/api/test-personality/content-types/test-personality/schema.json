@@ -58,6 +58,30 @@
       },
       "type": "uid",
       "required": true
+    },
+    "questionsMBTI": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::question-mbti.question-mbti",
+      "mappedBy": "testsPersonality"
+    },
+    "questionsBelbin": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::question-belbin.question-belbin",
+      "inversedBy": "testsPersonality"
+    },
+    "questionsPoints": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::question-points.question-points",
+      "inversedBy": "testsPersonality"
+    },
+    "questionsColorType": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::question-color-type.question-color-type",
+      "inversedBy": "testsPersonality"
     }
   }
 }
