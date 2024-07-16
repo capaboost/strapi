@@ -59,11 +59,29 @@
       "target": "api::question-mbti.question-mbti",
       "mappedBy": "testsPersonality"
     },
+    "frequencyMBTI": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer",
+      "required": true
+    },
     "questionsBelbin": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::question-belbin.question-belbin",
       "inversedBy": "testsPersonality"
+    },
+    "frequencyBelbin": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer",
+      "required": true
     },
     "questionsPoints": {
       "type": "relation",
@@ -71,11 +89,29 @@
       "target": "api::question-points.question-points",
       "inversedBy": "testsPersonality"
     },
+    "frequencyPoints": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer",
+      "required": true
+    },
     "questionsColorType": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::question-color-type.question-color-type",
       "inversedBy": "testsPersonality"
+    },
+    "frequencyColorType": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer",
+      "required": true
     }
   }
 }

@@ -814,6 +814,111 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBelbinQuestionCategoryBelbinQuestionCategory
+  extends Schema.CollectionType {
+  collectionName: 'belbin_questions_category';
+  info: {
+    singularName: 'belbin-question-category';
+    pluralName: 'belbin-questions-category';
+    displayName: 'Belbin Question Category';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    questionsBelbin: Attribute.Relation<
+      'api::belbin-question-category.belbin-question-category',
+      'oneToMany',
+      'api::question-belbin.question-belbin'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::belbin-question-category.belbin-question-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::belbin-question-category.belbin-question-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::belbin-question-category.belbin-question-category',
+      'oneToMany',
+      'api::belbin-question-category.belbin-question-category'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiColorTypeQuestionCategoryColorTypeQuestionCategory
+  extends Schema.CollectionType {
+  collectionName: 'color_type_questions_category';
+  info: {
+    singularName: 'color-type-question-category';
+    pluralName: 'color-type-questions-category';
+    displayName: 'Color Type Question Category';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    questions: Attribute.Relation<
+      'api::color-type-question-category.color-type-question-category',
+      'oneToMany',
+      'api::question-color-type.question-color-type'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::color-type-question-category.color-type-question-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::color-type-question-category.color-type-question-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::color-type-question-category.color-type-question-category',
+      'oneToMany',
+      'api::color-type-question-category.color-type-question-category'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiEmotionEmotion extends Schema.CollectionType {
   collectionName: 'emotions';
   info: {
@@ -1190,6 +1295,74 @@ export interface ApiMbtiQuestionCategoryMbtiQuestionCategory
   };
 }
 
+export interface ApiPersonalityQuestionCategoryPersonalityQuestionCategory
+  extends Schema.CollectionType {
+  collectionName: 'personality_question_categories';
+  info: {
+    singularName: 'personality-question-category';
+    pluralName: 'personality-question-categories';
+    displayName: 'Personality Question Category';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    questionsMBTI: Attribute.Relation<
+      'api::personality-question-category.personality-question-category',
+      'oneToMany',
+      'api::question-mbti.question-mbti'
+    >;
+    questionsBelbin: Attribute.Relation<
+      'api::personality-question-category.personality-question-category',
+      'oneToMany',
+      'api::question-belbin.question-belbin'
+    >;
+    questionsColorType: Attribute.Relation<
+      'api::personality-question-category.personality-question-category',
+      'oneToMany',
+      'api::question-color-type.question-color-type'
+    >;
+    questionsPoints: Attribute.Relation<
+      'api::personality-question-category.personality-question-category',
+      'oneToMany',
+      'api::question-points.question-points'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::personality-question-category.personality-question-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::personality-question-category.personality-question-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::personality-question-category.personality-question-category',
+      'oneToMany',
+      'api::personality-question-category.personality-question-category'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiPointsQuestionCategoryPointsQuestionCategory
   extends Schema.CollectionType {
   collectionName: 'points_question_categories';
@@ -1325,7 +1498,19 @@ export interface ApiQuestionBelbinQuestionBelbin extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    noRoleKeyword: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     resourceInvestigator: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    resourceInvestigatorKeyword: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1337,7 +1522,19 @@ export interface ApiQuestionBelbinQuestionBelbin extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    teamWorkerKeyword: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     coOrdinator: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    coOrdinatorKeyword: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1349,7 +1546,19 @@ export interface ApiQuestionBelbinQuestionBelbin extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    plantKeyword: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     monitorEvaluator: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    monitorEvaluatorKeyword: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1361,7 +1570,19 @@ export interface ApiQuestionBelbinQuestionBelbin extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    specialistKeyword: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     shaper: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    shaperKeyword: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1373,7 +1594,19 @@ export interface ApiQuestionBelbinQuestionBelbin extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    implementerKeyword: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     completerFinisher: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    completerFinisherKeyword: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1417,6 +1650,7 @@ export interface ApiQuestionBelbinQuestionBelbin extends Schema.CollectionType {
       Attribute.DefaultTo<'GEN_MULTI'>;
     age: Attribute.Enumeration<
       [
+        'AGE_MULTI',
         'PRE_TEENAGERS',
         'YOUNG_TEENAGERS',
         'OLD_TEENAGERS',
@@ -1437,6 +1671,16 @@ export interface ApiQuestionBelbinQuestionBelbin extends Schema.CollectionType {
       'api::question-belbin.question-belbin',
       'manyToMany',
       'api::test-personality.test-personality'
+    >;
+    category: Attribute.Relation<
+      'api::question-belbin.question-belbin',
+      'manyToOne',
+      'api::belbin-question-category.belbin-question-category'
+    >;
+    categoryPersonality: Attribute.Relation<
+      'api::question-belbin.question-belbin',
+      'manyToOne',
+      'api::personality-question-category.personality-question-category'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1558,6 +1802,7 @@ export interface ApiQuestionColorTypeQuestionColorType
       Attribute.DefaultTo<'GEN_MULTI'>;
     age: Attribute.Enumeration<
       [
+        'AGE_MULTI',
         'PRE_TEENAGERS',
         'YOUNG_TEENAGERS',
         'OLD_TEENAGERS',
@@ -1574,6 +1819,16 @@ export interface ApiQuestionColorTypeQuestionColorType
           localized: false;
         };
       }>;
+    category: Attribute.Relation<
+      'api::question-color-type.question-color-type',
+      'manyToOne',
+      'api::color-type-question-category.color-type-question-category'
+    >;
+    categoryPersonality: Attribute.Relation<
+      'api::question-color-type.question-color-type',
+      'manyToOne',
+      'api::personality-question-category.personality-question-category'
+    >;
     testsPersonality: Attribute.Relation<
       'api::question-color-type.question-color-type',
       'manyToMany',
@@ -1687,6 +1942,11 @@ export interface ApiQuestionMbtiQuestionMbti extends Schema.CollectionType {
       'manyToOne',
       'api::mbti-question-category.mbti-question-category'
     >;
+    categoryPersonality: Attribute.Relation<
+      'api::question-mbti.question-mbti',
+      'manyToOne',
+      'api::personality-question-category.personality-question-category'
+    >;
     answerScale: Attribute.Integer &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -1738,6 +1998,7 @@ export interface ApiQuestionMbtiQuestionMbti extends Schema.CollectionType {
       Attribute.DefaultTo<'GEN_MULTI'>;
     age: Attribute.Enumeration<
       [
+        'AGE_MULTI',
         'PRE_TEENAGERS',
         'YOUNG_TEENAGERS',
         'OLD_TEENAGERS',
@@ -1974,6 +2235,7 @@ export interface ApiQuestionPointsQuestionPoints extends Schema.CollectionType {
       Attribute.DefaultTo<'GEN_MULTI'>;
     age: Attribute.Enumeration<
       [
+        'AGE_MULTI',
         'PRE_TEENAGERS',
         'YOUNG_TEENAGERS',
         'OLD_TEENAGERS',
@@ -1994,6 +2256,11 @@ export interface ApiQuestionPointsQuestionPoints extends Schema.CollectionType {
       'api::question-points.question-points',
       'manyToOne',
       'api::points-question-category.points-question-category'
+    >;
+    categoryPersonality: Attribute.Relation<
+      'api::question-points.question-points',
+      'manyToOne',
+      'api::personality-question-category.personality-question-category'
     >;
     testsPersonality: Attribute.Relation<
       'api::question-points.question-points',
@@ -2386,21 +2653,49 @@ export interface ApiTestPersonalityTestPersonality
       'manyToMany',
       'api::question-mbti.question-mbti'
     >;
+    frequencyMBTI: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     questionsBelbin: Attribute.Relation<
       'api::test-personality.test-personality',
       'manyToMany',
       'api::question-belbin.question-belbin'
     >;
+    frequencyBelbin: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     questionsPoints: Attribute.Relation<
       'api::test-personality.test-personality',
       'manyToMany',
       'api::question-points.question-points'
     >;
+    frequencyPoints: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     questionsColorType: Attribute.Relation<
       'api::test-personality.test-personality',
       'manyToMany',
       'api::question-color-type.question-color-type'
     >;
+    frequencyColorType: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2770,12 +3065,15 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::belbin-question-category.belbin-question-category': ApiBelbinQuestionCategoryBelbinQuestionCategory;
+      'api::color-type-question-category.color-type-question-category': ApiColorTypeQuestionCategoryColorTypeQuestionCategory;
       'api::emotion.emotion': ApiEmotionEmotion;
       'api::event.event': ApiEventEvent;
       'api::event-template.event-template': ApiEventTemplateEventTemplate;
       'api::field.field': ApiFieldField;
       'api::hard-skill.hard-skill': ApiHardSkillHardSkill;
       'api::mbti-question-category.mbti-question-category': ApiMbtiQuestionCategoryMbtiQuestionCategory;
+      'api::personality-question-category.personality-question-category': ApiPersonalityQuestionCategoryPersonalityQuestionCategory;
       'api::points-question-category.points-question-category': ApiPointsQuestionCategoryPointsQuestionCategory;
       'api::profession.profession': ApiProfessionProfession;
       'api::question-belbin.question-belbin': ApiQuestionBelbinQuestionBelbin;

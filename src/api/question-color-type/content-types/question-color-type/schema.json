@@ -114,6 +114,7 @@
       },
       "type": "enumeration",
       "enum": [
+        "AGE_MULTI",
         "PRE_TEENAGERS",
         "YOUNG_TEENAGERS",
         "OLD_TEENAGERS",
@@ -124,6 +125,18 @@
         "ELDERS"
       ],
       "required": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::color-type-question-category.color-type-question-category",
+      "inversedBy": "questions"
+    },
+    "categoryPersonality": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::personality-question-category.personality-question-category",
+      "inversedBy": "questionsColorType"
     },
     "testsPersonality": {
       "type": "relation",

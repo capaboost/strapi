@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "personality_question_categories",
+  "info": {
+    "singularName": "personality-question-category",
+    "pluralName": "personality-question-categories",
+    "displayName": "Personality Question Category"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "questionsMBTI": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::question-mbti.question-mbti",
+      "mappedBy": "categoryPersonality"
+    },
+    "questionsBelbin": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::question-belbin.question-belbin",
+      "mappedBy": "categoryPersonality"
+    },
+    "questionsColorType": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::question-color-type.question-color-type",
+      "mappedBy": "categoryPersonality"
+    },
+    "questionsPoints": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::question-points.question-points",
+      "mappedBy": "categoryPersonality"
+    }
+  }
+}

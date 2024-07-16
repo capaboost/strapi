@@ -243,6 +243,7 @@
       },
       "type": "enumeration",
       "enum": [
+        "AGE_MULTI",
         "PRE_TEENAGERS",
         "YOUNG_TEENAGERS",
         "OLD_TEENAGERS",
@@ -259,6 +260,12 @@
       "relation": "manyToOne",
       "target": "api::points-question-category.points-question-category",
       "inversedBy": "questions"
+    },
+    "categoryPersonality": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::personality-question-category.personality-question-category",
+      "inversedBy": "questionsPoints"
     },
     "testsPersonality": {
       "type": "relation",
