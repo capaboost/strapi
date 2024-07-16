@@ -1363,6 +1363,53 @@ export interface ApiPersonalityQuestionCategoryPersonalityQuestionCategory
   };
 }
 
+export interface ApiPersonalityRecommendationPersonalityRecommendation
+  extends Schema.CollectionType {
+  collectionName: 'personality_recommendations';
+  info: {
+    singularName: 'personality-recommendation';
+    pluralName: 'personality-recommendations';
+    displayName: 'Personality Recommendation';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::personality-recommendation.personality-recommendation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::personality-recommendation.personality-recommendation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::personality-recommendation.personality-recommendation',
+      'oneToMany',
+      'api::personality-recommendation.personality-recommendation'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiPointsQuestionCategoryPointsQuestionCategory
   extends Schema.CollectionType {
   collectionName: 'points_question_categories';
@@ -3074,6 +3121,7 @@ declare module '@strapi/types' {
       'api::hard-skill.hard-skill': ApiHardSkillHardSkill;
       'api::mbti-question-category.mbti-question-category': ApiMbtiQuestionCategoryMbtiQuestionCategory;
       'api::personality-question-category.personality-question-category': ApiPersonalityQuestionCategoryPersonalityQuestionCategory;
+      'api::personality-recommendation.personality-recommendation': ApiPersonalityRecommendationPersonalityRecommendation;
       'api::points-question-category.points-question-category': ApiPointsQuestionCategoryPointsQuestionCategory;
       'api::profession.profession': ApiProfessionProfession;
       'api::question-belbin.question-belbin': ApiQuestionBelbinQuestionBelbin;

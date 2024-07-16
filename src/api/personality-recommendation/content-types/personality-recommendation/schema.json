@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "personality_recommendations",
+  "info": {
+    "singularName": "personality-recommendation",
+    "pluralName": "personality-recommendations",
+    "displayName": "Personality Recommendation"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    }
+  }
+}
